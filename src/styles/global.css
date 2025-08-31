@@ -1,54 +1,65 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @theme {
-  --font-title: 'Montserrat', serif;
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --color-brand-black: #000000;
-  --color-brand-white: #ffffff;
-  --color-brand-orange: #e1b168;
-  --color-brand-grey: #333333;
-  --color-brand-grey-light: #d9d9d9;
+    --font-title: "Montserrat", serif;
+    --font-sans: "Plus Jakarta Sans", sans-serif;
+    --color-brand-black: #000000;
+    --color-brand-white: #ffffff;
+    --color-brand-orange: #e1b168;
+    --color-brand-grey: #333333;
+    --color-brand-grey-light: #d9d9d9;
 }
 
-h1, h2, h3, h4, h5, h6, .title {
-  font-family: var(--font-title);
-  font-weight: bold;
+body {
+    font-size: 16px; /* xl = 18px */
+    line-height: 1.75;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.title {
+    font-family: var(--font-title);
+    font-weight: bold;
 }
 
 .container {
-  margin: 8rem auto;
-  max-width: 1350px;
-  padding-right: 1rem;
-  padding-left: 1rem;
+    margin: 0 auto;
+    max-width: 1350px;
+    padding-right: 1rem;
+    padding-left: 1rem;
 }
 
 .debug {
-  border: 1px solid red;
+    border: 1px solid red;
 }
 
 p {
-  margin-bottom: 1rem;
+    margin-bottom: 1rem;
 }
 
 /* Custom scroll bar */
 
 /* width */
 ::-webkit-scrollbar {
-  width: 10px;
+    width: 10px;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: var(--color-brand-white);
+    background: var(--color-brand-white);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brand-orange);
-  border-radius: 5px;
+    background: var(--color-brand-orange);
+    border-radius: 5px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-black);
+    background: var(--color-black);
 }
