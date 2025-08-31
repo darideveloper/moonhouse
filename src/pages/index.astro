@@ -1,21 +1,13 @@
 ---
-import Header from "../components/sections/Header";
-import Welcome from "../components/ui/Welcome.astro";
 import Layout from "../layouts/Layout.astro";
+import About from "../components/sections/About.astro";
+import Hero from "../components/sections/Hero.astro";
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-    <section class="relative h-screen">
-        <Header client:load />
-        <div
-            class="absolute inset-0 bg-[url('/surface_moon_hero_mobile.png')] lg:bg-[url('/surface_moon_hero.png')] bg-cover bg-center bg-no-repeat z-[-10]"
-        >
-        </div>
-    </section>
-    <section class="h-screen">
-        <h1>Hello World</h1>
-    </section>
+        <Hero client:load />
+        <About client:load />
 </Layout>
