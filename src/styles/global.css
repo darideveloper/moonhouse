@@ -1,5 +1,5 @@
 @import "tailwindcss";
-
+@import '@fontsource-variable/dancing-script';
 @theme {
     --font-title: "Montserrat", serif;
     --font-sans: "Plus Jakarta Sans", sans-serif;
@@ -31,6 +31,10 @@ h6,
     max-width: 1350px;
     padding-right: 1rem;
     padding-left: 1rem;
+}
+
+.font-script {
+    font-family: "Dancing Script Variable", cursive;
 }
 
 .debug {
