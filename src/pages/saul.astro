@@ -1,0 +1,38 @@
+---
+import Layout from "../layouts/Layout.astro";
+import About from "../components/sections/About.astro";
+import Hero from "../components/sections/Hero.astro";
+import SmallSubtitle from "../components/ui/SmallSubtitle.astro";
+import Subtitle from "../components/ui/Subtitle.astro";
+import OffersDescription from "../components/ui/OffersDescription.astro";
+import OffersImage from "../components/ui/OffersImage.astro";
+
+const datos = {
+  smallsubtitle: "Menu",
+  subtitle: "Try Our Special Offers",
+  description:
+    "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making it look like readable English.",
+  image: { src: "/images/durazno.webp", alt: "Pastel con duraznos" },
+};
+---
+
+<Layout>
+  <Hero />
+  <About />
+  <section class:list={["max-w-md", "mx-auto", "p-4 bg-white", "p-6"]}>
+    <SmallSubtitle text={datos.smallsubtitle} ish2={true} iswhite={false}>
+      {datos.smallsubtitle}
+    </SmallSubtitle>
+
+    <Subtitle
+      text={datos.subtitle}
+      ish2={false}
+      iswhite={false}
+      class:list={["!text-4xl", "!font-bold", "!text-black"]}
+    />
+
+    <OffersDescription texto={datos.description} class="" />
+
+    <OffersImage src={datos.image.src} alt={datos.image.alt} />
+  </section>
+</Layout>
