@@ -45,19 +45,36 @@ export default function Header(): React.JSX.Element {
               className={clsx(
                 "flex",
                 "z-30",
+                "transition-all",
+                "duration-300",
+                "ease-in-out",
+                // Mobile menu styles
+                "flex-col",
+                "bg-gradient-to-t",
+                "from-black",
+                "via-black/90",
+                "to-black/70",
+                "p-4",
+                "rounded-2xl",
+                "text-center",
+                "text-2xl",
+                "absolute",
+                "top-full",
+                "left-0",
+                "right-0",
+                "mt-2",
+                "transform",
+                // Conditional visibility and animation
                 isNavOpen ? [
-                  "flex-col", "bg-gradient-to-t","from-black", "via-black/90", "to-black/70",
-                  "p-4",
-                  "rounded-2xl",
-                  "text-center",
-                  "text-2xl",
-                  "absolute",
-                  "top-full",
-                  "left-0",
-                  "right-0",
-                  "mt-2",
-                  "backdrop-blur-sm"
-                ] : "hidden",
+                  "opacity-100",
+                  "translate-y-0",
+                  "pointer-events-auto"
+                ] : [
+                  "opacity-0",
+                  "-translate-y-4",
+                  "pointer-events-none"
+                ],
+                // Desktop styles (always visible on lg+)
                 "lg:flex",
                 "lg:flex-row",
                 "lg:text-base",
@@ -67,7 +84,10 @@ export default function Header(): React.JSX.Element {
                 "lg:static",
                 "lg:bg-none",
                 "lg:p-0",
-                "lg:rounded-none"
+                "lg:rounded-none",
+                "lg:opacity-100",
+                "lg:translate-y-0",
+                "lg:pointer-events-auto"
               )}
             >
               <NavButton href="/" children="HOME" />

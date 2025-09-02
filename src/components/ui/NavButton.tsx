@@ -22,7 +22,9 @@ export default function NavButton({ href, children }: NavButtonProps) {
         "hover:text-black",
         "hover:bg-white",
         "hover:p-2",
-        "hover:rounded"
+        "hover:rounded",
+        "hover:transition",
+        "hover:duration-300"
       )}>
         {children}
       </a>
