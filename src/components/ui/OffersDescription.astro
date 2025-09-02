@@ -1,0 +1,15 @@
+---
+interface Props {
+  texto?: string;
+  class?: string;
+}
+
+const {
+  texto = "Lorem ipsum is that it has a more-or-less normal distribution of letters.",
+  class: className = "",
+} = Astro.props as Props;
+---
+
+<p class:list={["text-base", "leading-relaxed", "text-gray-600"]}>
+  {texto}
+</p>
