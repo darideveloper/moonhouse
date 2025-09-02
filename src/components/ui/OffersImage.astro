@@ -1,0 +1,15 @@
+---
+interface Props {
+  src?: string;
+  alt?: string;
+  class?: string;
+}
+
+const {
+  src = "/images/offer.jpg",
+  alt = "Imagen de oferta",
+  class: className = "",
+} = Astro.props as Props;
+---
+
+<img src={src} alt={alt} class:list={["w-full", "h-auto", "mt-4"]} />
