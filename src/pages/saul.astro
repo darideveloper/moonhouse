@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import About from "../components/sections/About.astro";
+import AboutCards from "../components/sections/AboutCards.astro";
 import Hero from "../components/sections/Hero.astro";
 import SmallSubtitle from "../components/ui/SmallSubtitle.astro";
 import Subtitle from "../components/ui/Subtitle.astro";
@@ -18,8 +18,8 @@ const datos = {
 
 <Layout>
   <Hero />
-  <About />
-  <section class:list={["max-w-md", "mx-auto", "p-4 bg-white", "p-6"]}>
+  <AboutCards />
+  <section class:list={["max-w-md", "mx-auto", "p-6", "bg-white"]}>
     <SmallSubtitle text={datos.smallsubtitle} ish2={true} iswhite={false}>
       {datos.smallsubtitle}
     </SmallSubtitle>

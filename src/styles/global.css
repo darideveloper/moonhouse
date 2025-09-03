@@ -1,7 +1,8 @@
 @import "tailwindcss";
 @import '@fontsource-variable/dancing-script';
+@import '@fontsource-variable/montserrat';
 @theme {
-    --font-title: "Montserrat", serif;
+    --font-title: "Montserrat Variable", serif;
     --font-sans: "Plus Jakarta Sans", sans-serif;
     --color-brand-black: #000000;
     --color-brand-white: #ffffff;
