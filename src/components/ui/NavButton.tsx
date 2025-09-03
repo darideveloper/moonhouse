@@ -13,21 +13,20 @@ interface NavButtonProps {
 export default function NavButton({ href, children }: NavButtonProps) {
   return (
     <li>
-      <a href={href} className={clsx(
-        "text-white",
-        "text-sm",
-        "md:text-base",
-        "lg:text-lg",
-        "p-2",
-        "hover:text-black",
-        "hover:bg-white",
-        "hover:p-2",
-        "hover:rounded",
-        "hover:transition",
-        "hover:duration-300"
-      )}>
+      <a 
+        href={href} 
+        className={clsx(
+          "text-white hover:text-black",
+          "text-sm md:text-base lg:text-lg",
+          "p-2",
+          "hover:bg-white",
+          "hover:rounded",
+          "hover:transition",
+          "hover:duration-300"
+        )}
+      >
         {children}
       </a>
     </li>
-  )
+  );
 }
