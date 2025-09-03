@@ -1,45 +1,41 @@
 ---
 interface Props {
-  text: string;
   ish2?: boolean;
   iswhite?: boolean;
   class?: string;
 }
 
-const {
-  text,
-  ish2 = false,
-  iswhite = false,
-  class: className = "",
-} = Astro.props;
+const { ish2 = false, iswhite = false, class: className = "" } = Astro.props;
+
+const baseStyles = ["tracking-tight"];
+
+const colorStyles = iswhite ? "text-white" : "text-black";
+
+const h2Styles = [
+  ...baseStyles,
+  "font-bold",
+  "text-2xl",
+  colorStyles,
+  className,
+];
+
+const h3Styles = [
+  ...baseStyles,
+  "font-semibold",
+  "text-xl",
+  colorStyles,
+  className,
+];
 ---
 
 {
   ish2 ? (
-    <h2
-      class:list={[
-        "font-bold",
-        "tracking-tight",
-        "mb-2",
-        "text-2xl",
-        iswhite ? "text-white" : "text-black",
-        className,
-      ]}
-    >
-      {text}
+    <h2 class:list={h2Styles}>
+      <slot />
     </h2>
   ) : (
-    <h3
-      class:list={[
-        "font-semibold",
-        "tracking-tight",
-        "mb-2",
-        "text-xl",
-        iswhite ? "text-white" : "text-black",
-        className,
-      ]}
-    >
-      {text}
+    <h3 class:list={h3Styles}>
+      <slot />
     </h3>
   )
 }
