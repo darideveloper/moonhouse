@@ -19,10 +19,10 @@ const { icon: IconComponent, title, description, link } = Astro.props;
     "max-w-md",
     "mx-auto",
     "lg:mx-0",
-    "lg:max-w-none"
+    "lg:max-w-none",
   ]}
 >
-  <a 
+  <a
     href={link || "#"}
     class:list={[
       "flex",
@@ -31,7 +31,7 @@ const { icon: IconComponent, title, description, link } = Astro.props;
       "w-full",
       "text-white",
       "no-underline",
-      link && link !== "#" ? "cursor-pointer" : "cursor-default"
+      link && link !== "#" ? "cursor-pointer" : "cursor-default",
     ]}
   >
     <div
@@ -43,7 +43,7 @@ const { icon: IconComponent, title, description, link } = Astro.props;
         "rounded-full",
         "flex",
         "items-center",
-        "justify-center"
+        "justify-center",
       ]}
     >
       <div
@@ -53,50 +53,38 @@ const { icon: IconComponent, title, description, link } = Astro.props;
           "flex",
           "items-center",
           "justify-center",
-          "text-black"
+          "text-black",
         ]}
       >
         <IconComponent size={32} />
       </div>
     </div>
-    <div
-      class:list={[
-        "flex-1"
-      ]}
-    >
-      <h2
-        class:list={[
-          "text-2xl",
-          "font-bold",
-          "mb-2"
-        ]}
-      >
+    <div class:list={["flex-1"]}>
+      <h2 class:list={["text-2xl", "font-bold", "mb-2"]}>
         {title}
       </h2>
-      {description && (
-        <p
-          class:list={[
-            "text-gray-300",
-            "leading-relaxed",
-            "mb-2"
-          ]}
-        >
-          {description}
-        </p>
-      )}
-      {link && link.startsWith('mailto:') && (
-        <span
-          class:list={[
-            "text-gray-300",
-            "hover:text-white",
-            "transition-colors",
-            "duration-200",
-            "underline"
-          ]}
-        >
-          {link.replace('mailto:', '')}
-        </span>
-      )}
+      {
+        description && (
+          <p class:list={["text-gray-300", "leading-relaxed", "mb-2"]}>
+            {description}
+          </p>
+        )
+      }
+      {
+        link && link.startsWith("mailto:") && (
+          <span
+            class:list={[
+              "text-gray-300",
+              "hover:text-white",
+              "transition-colors",
+              "duration-200",
+              "underline",
+            ]}
+          >
+            {link.replace("mailto:", "")}
+          </span>
+        )
+      }
     </div>
   </a>
 </article>

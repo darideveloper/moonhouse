@@ -25,17 +25,17 @@ export default function Logo({ handleNav, isNavOpen }: LogoProps) {
         "relative"
       )}>
         <a href="/">
-        <img
-          src="/images/logo.png"
-          alt="Logo"
-          className={clsx(
-            "w-16",
-            "h-16",
-            "lg:w-20",
-            "lg:h-20",
-            "xl:w-32",
-            "xl:h-32"
-          )}
+          <img
+            src="/images/logo.png"
+            alt="Logo"
+            className={clsx(
+              "w-16",
+              "h-16",
+              "lg:w-20",
+              "lg:h-20",
+              "xl:w-32",
+              "xl:h-32"
+            )}
           />
         </a>
         {/* Toggle the menu icon */}

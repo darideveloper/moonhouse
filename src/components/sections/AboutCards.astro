@@ -28,56 +28,41 @@ const cardData: CardData[] = [
     iconName: "location",
     title: "Locate Us",
     description: "Riverside 25, San Francisco, California",
-    link: "#location"
+    link: "#location",
   },
   {
     iconName: "clock",
-    title: "Open Hours", 
+    title: "Open Hours",
     description: "Mon To Fri 9:00 AM - 9:00 PM",
-    link: "#openhours"
+    link: "#openhours",
   },
   {
     iconName: "reservations",
     title: "Reservations",
     description: "",
-    link: "mailto:hirestaurantate@gmail.com"
-  }
+    link: "mailto:hirestaurantate@gmail.com",
+  },
 ];
 ---
 
-<section
-    class:list={[
-        "bg-black",
-        "py-20"
-    ]}
->
+<section class:list={["bg-black", "py-20"]}>
+  <div class:list={["max-w-7xl", "mx-auto", "px-6"]}>
+    <!-- Top Info Cards -->
     <div
-        class:list={[
-            "max-w-7xl",
-            "mx-auto",
-            "px-6"
-        ]}
+      class:list={["grid", "grid-cols-1", "lg:grid-cols-3", "gap-12", "mb-20"]}
     >
-        <!-- Top Info Cards -->
-        <div
-            class:list={[
-                "grid",
-                "grid-cols-1",
-                "lg:grid-cols-3",
-                "gap-12",
-                "mb-20"
-            ]}
-        >
-            {cardData.map((card) => (
-                <AboutCard
-                    icon={iconMap[card.iconName]}
-                    title={card.title}
-                    description={card.description}
-                    link={card.link}
-                />
-            ))}
-        </div>
-
-        <CardInfo />
+      {
+        cardData.map((card) => (
+          <AboutCard
+            icon={iconMap[card.iconName]}
+            title={card.title}
+            description={card.description}
+            link={card.link}
+          />
+        ))
+      }
     </div>
+
+    <CardInfo />
+  </div>
 </section>

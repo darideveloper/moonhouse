@@ -24,8 +24,8 @@ export default function Header(): React.JSX.Element {
         "left-0",
         "right-0",
         "z-10",
-        "py-10", 
-        "bg-gradient-to-b", "from-black", "via-black/75", "via-black/50", "via-black/25", "to-transparent", 
+        "py-10",
+        "bg-gradient-to-b", "from-black", "via-black/75", "via-black/50", "via-black/25", "to-transparent",
         "h-40"
       )}>
         <nav className={clsx(
