@@ -100,6 +100,7 @@ export default function Gallery() {
               <img
                 src={image}
                 alt='Gallery'
+                loading='lazy'
               />
             </SwiperSlide>
           ))}
