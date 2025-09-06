@@ -2,37 +2,29 @@
 import Layout from "../layouts/Layout.astro";
 import AboutCards from "../components/sections/AboutCards.astro";
 import Hero from "../components/sections/Hero.astro";
-import SmallSubtitle from "../components/ui/SmallSubtitle.astro";
-import Subtitle from "../components/ui/Subtitle.astro";
-import OffersDescription from "../components/ui/OffersDescription.astro";
-import OffersImage from "../components/ui/OffersImage.astro";
+import SpecialOffers from "../components/sections/SpecialOffers.astro";
+import Footer from "../components/sections/Footer.astro";
 
-const datos = {
+const specialOffersData = {
   smallsubtitle: "Menu",
   subtitle: "Try Our Special Offers",
   description:
     "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making it look like readable English.",
-  image: { src: "/images/durazno.webp", alt: "Pastel con duraznos" },
+  image: {
+    src: "/images/durazno.webp",
+    alt: "Pastel con duraznos",
+  },
 };
 ---
 
 <Layout>
   <Hero />
   <AboutCards />
-  <section class:list={["max-w-md", "mx-auto", "p-6", "bg-white"]}>
-    <SmallSubtitle text={datos.smallsubtitle} ish2={true} iswhite={false}>
-      {datos.smallsubtitle}
-    </SmallSubtitle>
-
-    <Subtitle
-      text={datos.subtitle}
-      ish2={false}
-      iswhite={false}
-      class:list={["!text-4xl", "!font-bold", "!text-black"]}
-    />
-
-    <OffersDescription texto={datos.description} class="" />
-
-    <OffersImage src={datos.image.src} alt={datos.image.alt} />
-  </section>
+  <SpecialOffers
+    smallsubtitle={specialOffersData.smallsubtitle}
+    subtitle={specialOffersData.subtitle}
+    description={specialOffersData.description}
+    image={specialOffersData.image}
+  />
+  <Footer />
 </Layout>

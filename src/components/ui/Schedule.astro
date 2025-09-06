@@ -1,0 +1,56 @@
+---
+import SmallSubtitle from "../ui/SmallSubtitle.astro";
+
+interface ScheduleDay {
+  day: string;
+  hours: string;
+}
+
+interface Props {
+  title?: string;
+  schedule?: ScheduleDay[];
+  class?: string;
+  lineClass?: string;
+}
+
+const {
+  title = "WORKING HOURS",
+  schedule = [
+    { day: "Mon - Fri:", hours: "7:00am - 6:00pm" },
+    { day: "Sat:", hours: "7:00am - 6:00pm" },
+    { day: "Sun:", hours: "8:00am - 6:00pm" },
+  ],
+  class: className = "",
+  lineClass = "",
+} = Astro.props;
+
+const containerStyles = ["text-white", "text-center md:text-left", className];
+
+const dayStyles = [
+  "flex",
+  "justify-center md:justify-start",
+  "items-center",
+  "mb-2",
+];
+
+const dayTextStyles = ["text-brand-orange", "font-medium"];
+
+const hoursStyles = ["text-white", "ml-2"];
+---
+
+<div class:list={containerStyles}>
+  <SmallSubtitle
+    iswhite={true}
+    class="text-center md:text-left"
+    lineClass={lineClass}>{title}</SmallSubtitle
+  > <br>
+
+  {
+    schedule.map((item) => (
+      <div class:list={dayStyles}>
+        <span class:list={dayTextStyles}>{item.day}</span>
+        <span class:list={hoursStyles}>{item.hours}</span>
+      </div>
+    ))
+  }
+</div>

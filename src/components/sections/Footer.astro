@@ -1,0 +1,175 @@
+---
+import SmallSubtitle from "../ui/SmallSubtitle.astro";
+import Subtitle from "../ui/Subtitle.astro";
+import Link from "../ui/Link.astro";
+import IconLink from "../ui/Icon";
+import Schedule from "../ui/Schedule.astro";
+
+const contactData = {
+  address: "5 Rue Dalou, 75015 Paris",
+  phone: "+33 156 78 89 56",
+  email: "benoit@mail.com",
+};
+
+const links = [
+  { text: "Privacy Policy", href: "/privacy" },
+  { text: "Terms of Service", href: "/terms" },
+  { text: "About Us", href: "/about" },
+  { text: "Contact", href: "/contact" },
+];
+
+const socialLinks = [
+  { iconName: "instagram", href: "https://instagram.com/example" },
+  { iconName: "facebook", href: "https://facebook.com/example" },
+  { iconName: "whatsapp", href: "https://wa.me/+1234567890" },
+  { iconName: "tiktok", href: "https://tiktok.com/@example" },
+];
+
+const spotifyPlaylistId = "37i9dQZF1DX0XUsuxWHRQd";
+const spotifyEmbedUrl = `https://open.spotify.com/embed/playlist/${spotifyPlaylistId}?utm_source=generator&theme=0`;
+
+const workingHours = [
+  { day: "Mon - Fri:", hours: "7:00am - 6:00pm" },
+  { day: "Sat:", hours: "7:00am - 6:00pm" },
+  { day: "Sun:", hours: "8:00am - 6:00pm" },
+];
+
+const footerStyles = [
+  "bg-black",
+  "text-white",
+  "py-16",
+  "px-4",
+  "relative",
+  "overflow-hidden",
+];
+
+const containerStyles = ["max-w-7xl", "mx-auto", "relative", "z-10"];
+
+const gridStyles = [
+  "grid",
+  "grid-cols-1",
+  "md:flex",
+  "md:justify-between",
+  "mb-12",
+  "text-center md:text-left",
+];
+
+const spotifyWrapperStyles = ["flex", "justify-center", "mb-12"];
+
+const spotifyStyles = [
+  "w-full",
+  "max-w-5xl",
+  "rounded-3xl",
+  "overflow-hidden",
+  "shadow-lg",
+];
+
+const sectionStyles = ["space-y-4"];
+
+const socialGridStyles = [
+  "flex",
+  "gap-3",
+  "mt-4",
+  "justify-center md:justify-start",
+];
+
+const copyrightStyles = [
+  "border-t",
+  "border-brand-white",
+  "pt-6",
+  "text-center",
+  "text-gray-400",
+  "text-sm",
+];
+
+const whatsappNumber = "+4494340035";
+---
+
+<div class:list={footerStyles}>
+  <div class:list={spotifyWrapperStyles}>
+    <div class:list={spotifyStyles}>
+      <iframe
+        src={spotifyEmbedUrl}
+        width="100%"
+        height="360"
+        allowfullscreen=""
+        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+        loading="lazy"></iframe>
+    </div>
+  </div>
+</div>
+<footer class:list={footerStyles}>
+  <div class="absolute inset-0">
+    <img
+      src="/images/moonscape-bg.png"
+      alt="Moon landscape background"
+      class="w-full h-full object-cover"
+    />
+  </div>
+
+  <div class:list={containerStyles}>
+    <div class:list={gridStyles}>
+      <div class:list={sectionStyles}>
+        <SmallSubtitle
+          iswhite={true}
+          class="text-center md:text-left"
+          lineClass="mx-auto md:mx-0">CONTACT</SmallSubtitle
+        ><br />
+        <div>
+          <p class="text-white mb-2">{contactData.address}</p>
+          <p class="text-brand-orange mb-2">
+            Call - <Link href={`tel:${contactData.phone}`} openInNewTab={false}>
+              {contactData.phone}
+            </Link>
+          </p>
+          <p class="text-brand-orange">
+            <Link href={`mailto:${contactData.email}`} openInNewTab={false}>
+              {contactData.email}
+            </Link>
+          </p>
+        </div>
+        <div class:list={socialGridStyles}>
+          {
+            socialLinks.map((social) => (
+              <IconLink
+                iconName={social.iconName}
+                href={social.href}
+                openInNewTab={true}
+                client:load
+              />
+            ))
+          }
+        </div>
+      </div>
+
+      <div class:list={sectionStyles}>
+        <Subtitle iswhite={true}><br /><br /><br />Moonhouse</Subtitle>
+        <p class="text-brand-white">Get news & offers events.</p>
+      </div>
+
+      <div class:list={sectionStyles}>
+        <Schedule
+          title="WORKING HOURS"
+          schedule={workingHours}
+          lineClass="mx-auto md:mx-0"
+        />
+      </div>
+    </div>
+
+    <div class:list={copyrightStyles}>
+      {
+        links.map((link) => (
+          <Link href={link.href} openInNewTab={true}>
+            {link.text}
+          </Link>
+        ))
+      }
+      <p>
+        © 2025 Moonhouse. All rights reserved. |
+        <Link href={`https://wa.me/${whatsappNumber}`} openInNewTab={true}>
+          Contact via WhatsApp
+        </Link>
+      </p>
+    </div>
+  </div>
+</footer>
