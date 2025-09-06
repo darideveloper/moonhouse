@@ -1,59 +1,54 @@
 ---
-import SmallSubtitle from "../ui/SmallSubtitle.astro";
-import Subtitle from "../ui/Subtitle.astro";
+import SmallSubtitle from '../ui/SmallSubtitle.astro'
+import SpecialOffer from '../ui/SpecialOffer.astro'
+
+interface Product {
+  name: string
+  description: string
+  price: number
+  image: {
+    src: string
+    alt: string
+  }
+}
 
 interface Props {
-  smallsubtitle?: string;
-  subtitle?: string;
-  description?: string;
-  image?: {
-    src: string;
-    alt: string;
-  };
-  class?: string;
+  smallsubtitle?: string
+  products?: Product[]
+  class?: string
 }
 
 const {
-  smallsubtitle = "Menu",
-  subtitle = "Try Our Special Offers",
-  description = "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making it look like readable English.",
-  image = { src: "/images/durazno.webp", alt: "Special offer image" },
-  class: className = "",
-} = Astro.props;
+  smallsubtitle = 'Menu',
+  products = [],
+  class: className = '',
+} = Astro.props
 
 const sectionStyles = [
-  "max-w-md",
-  "mx-auto",
-  "p-4",
-  "bg-white",
-  "p-6",
+  'max-w-md',
+  'mx-auto',
+  'p-4',
+  'bg-white',
+  'p-6',
   className,
-];
-
-const descriptionStyles = [
-  "text-base",
-  "leading-relaxed",
-  "text-brand-black",
-  "mb-4",
-];
-
-const imageStyles = ["w-full", "h-auto", "mt-4", "rounded-lg"];
-
-const customSubtitleStyles = ["!text-4xl", "!font-bold", "!text-black"];
+]
 ---
 
 <section class:list={sectionStyles}>
-  <SmallSubtitle ish2={true} iswhite={false}>
+  <SmallSubtitle
+    ish2={true}
+    iswhite={false}
+  >
     {smallsubtitle}
   </SmallSubtitle>
 
-  <Subtitle ish2={false} iswhite={false} class:list={customSubtitleStyles}>
-    {subtitle}
-  </Subtitle>
-
-  <p class:list={descriptionStyles}>
-    {description}
-  </p>
-
-  <img src={image.src} alt={image.alt} class:list={imageStyles} />
+  {
+    products.map((product) => (
+      <SpecialOffer
+        name={product.name}
+        description={product.description}
+        image={product.image}
+      />
+    ))
+  }
 </section>
