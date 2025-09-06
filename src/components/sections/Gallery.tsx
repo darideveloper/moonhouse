@@ -3,8 +3,8 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import clsx from "clsx";
 import { Navigation, Autoplay } from "swiper/modules";
 
-// icons
-import { FaRegArrowAltCircleRight, FaRegArrowAltCircleLeft } from "react-icons/fa";
+// components
+import NavigationButton from "../ui/NavigationButton";
 
 // styles
 import "swiper/css";
@@ -20,7 +20,6 @@ export default function Gallery() {
         "/images/gallery/4.png",
         "/images/gallery/5.png",
         "/images/gallery/6.png",
-        "/images/gallery/1.png",
     ];
 
 
@@ -47,27 +46,8 @@ export default function Gallery() {
                 "relative"
             )}>
                 {/* Custom Navigation Buttons */}
-                <button className={clsx(
-                    "gallery-prev",
-                    "absolute",
-                    "left-4",
-                    "top-1/2",
-                    "-translate-y-1/2",
-                    "z-10", "text-brand-grey"
-                )}>
-                    <FaRegArrowAltCircleLeft className="text-3xl" />
-                </button>
-
-                <button className={clsx(
-                    "gallery-next",
-                    "absolute",
-                    "right-4",
-                    "top-1/2",
-                    "-translate-y-1/2",
-                    "z-10", "text-brand-grey"
-                )}>
-                    <FaRegArrowAltCircleRight className="text-3xl" />
-                </button>
+                <NavigationButton direction="prev" className="gallery-prev"/>
+                <NavigationButton direction="next" className="gallery-next"/>
 
                 <Swiper
                     modules={[Navigation, Autoplay]}

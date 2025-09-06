@@ -1,7 +1,7 @@
 ---
 // Fornts
-import '@fontsource-variable/plus-jakarta-sans';
-import '@fontsource-variable/montserrat';
+import "@fontsource-variable/plus-jakarta-sans";
+import "@fontsource-variable/montserrat";
 
 // Global styles
 import "../styles/global.css";
@@ -14,13 +14,13 @@ import Header from "../components/sections/Header";
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<meta name="generator" content={Astro.generator} />
 		<title>Astro Basics</title>
 	</head>
 	<body>
-        <Header client:load />
+		<Header client:load />
 		<slot />
 	</body>
 </html>
