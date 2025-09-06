@@ -9,7 +9,6 @@ interface Props {
   className?: string;
 }
 
-// Diccionario de iconos disponibles
 const iconMap = {
   instagram: FaInstagram,
   facebook: FaFacebook,
@@ -25,7 +24,6 @@ export const IconLink: React.FC<Props> = ({
 }) => {
   const Icon = iconMap[iconName as keyof typeof iconMap];
 
-  // Variables para estilos del enlace con icono
   const linkStyles = clsx(
     "text-brand-orange",
     "hover:text-brand-white",
