@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import About from "../components/sections/About.astro";
 import Hero from "../components/sections/Hero.astro";
 import SpecialOffers from "../components/sections/SpecialOffers.astro";
+import Footer from "../components/sections/Footer.astro";
 
 const specialOffersData = {
   smallsubtitle: "Menu",
@@ -25,4 +26,5 @@ const specialOffersData = {
     description={specialOffersData.description}
     image={specialOffersData.image}
   />
+  <Footer />
 </Layout>
