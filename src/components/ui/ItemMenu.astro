@@ -1,0 +1,55 @@
+---
+interface Props {
+  name?: string;
+  description?: string;
+  price?: number;
+  image?: {
+    src: string;
+    alt: string;
+  };
+  class?: string;
+}
+
+const {
+  name = "Default Item",
+  description = "Default description for the menu item.",
+  price = 0,
+  image = { src: "/images/durazno.webp", alt: "Default menu item image" },
+  class: className,
+} = Astro.props;
+
+const imageStyles = [
+  "w-20",
+  "h-20",
+  "rounded-full",
+  "object-cover",
+  "flex-shrink-0",
+];
+---
+
+<div class:list={["flex w-full items-center gap-4 py-4", className]}>
+  <img src={image.src} alt={image.alt} class:list={imageStyles} />
+
+  <div class:list={["flex w-full flex-col"]}>
+    <p class:list={["text-3xl", "!font-light","text-brand-black"]}>{name}</p>
+
+    <div class:list={["flex w-full items-baseline gap-4"]}>
+      <p class:list={["text-sm text-gray-500"]}>{description}</p>
+
+      <div
+        class:list={[
+          "flex-grow",
+          "border-b",
+          "border-dotted",
+          "border-gray-300",
+        ]}
+      >
+      </div>
+
+      <span
+        class:list={["text-xl font-bold text-brand-black whitespace-nowrap"]}
+        >$ {price}</span
+      >
+    </div>
+  </div>
+</div>
