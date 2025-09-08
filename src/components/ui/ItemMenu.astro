@@ -31,7 +31,7 @@ const imageStyles = [
   <img src={image.src} alt={image.alt} class:list={imageStyles} />
 
   <div class:list={["flex w-full flex-col"]}>
-    <p class:list={["text-3xl", "!font-light","text-brand-black"]}>{name}</p>
+    <p class:list={["text-base md:text-3xl", "!font-light","text-brand-black"]}>{name}</p>
 
     <div class:list={["flex w-full items-baseline gap-4"]}>
       <p class:list={["text-sm text-gray-500"]}>{description}</p>
@@ -39,7 +39,7 @@ const imageStyles = [
       <div
         class:list={[
           "flex-grow",
-          "border-b",
+          "border-b-3",
           "border-dotted",
           "border-gray-300",
         ]}
