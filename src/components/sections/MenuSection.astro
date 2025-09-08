@@ -23,7 +23,7 @@ const { title = "Our Menu", items = [], class: className } = Astro.props;
 const customSubtitleStyles = ["!text-4xl", "mb-4"];
 ---
 
-<div class:list={["w-full", "pt-0","pb-0", "p-6", className]}>
+<div class:list={["justify-center md:justify-start","items-center md:items-start","w-full", "pt-0","pb-0", "p-6", className]}>
   <Subtitle ish2={false} iswhite={false} class:list={customSubtitleStyles}>
     {title}
   </Subtitle>
