@@ -11,13 +11,13 @@ export default function NavigationButton({
     direction,
     className,
 }: NavigationButtonProps) {
-    const Icon = direction==='next' ? FaRegArrowAltCircleRight : FaRegArrowAltCircleLeft;
+    const Icon = direction === 'next' ? FaRegArrowAltCircleRight : FaRegArrowAltCircleLeft;
 
     return (
         <button className={clsx(
             className,
             "absolute",
-            direction==='next' ? 'right-4' : 'left-4',
+            direction === 'next' ? 'right-4' : 'left-4',
             "top-1/2",
             "-translate-y-1/2",
             "z-10",
