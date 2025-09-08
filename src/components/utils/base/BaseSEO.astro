@@ -1,0 +1,165 @@
+---
+interface Props {
+  currentPage: string // Current page
+  jsonType: string // Type of the page
+  extraJson?: Record<string, any> // Extra JSON data
+  baseDescription?: string // Description of the page (optional, to ignore i18n)
+  baseKeywords?: string // Keywords of the page (optional, to ignore i18n)
+  author?: string // Author of the page (optional, to ignore i18n)
+  useTagLine?: boolean // Use tag line from i18n
+}
+const {
+  currentPage,
+  jsonType,
+  extraJson = {},
+  baseDescription = '',
+  baseKeywords = '',
+  author = "Dari Dev's Team",
+  useTagLine = true,
+} = Astro.props as Props
+
+// Data
+import { domain } from '../../../data/setup'
+import { email, socialNetworks, googleMapsLink } from '../../../data/contact'
+
+// Get page metadata (no i18n)
+const title = 'Moonhouse Restaurant'
+const pageName = currentPage
+const description = baseDescription
+const image = '/images/logo.png'
+const twitterHandle = '@DeveloperDari'
+let keywords = baseKeywords
+
+// Split keywords into an array if it's a string
+const keywordsContent = Array.isArray(keywords) ? keywords.join(', ') : keywords
+
+// Calculate page title
+let pageTitle
+if (currentPage == 'home') {
+  pageTitle = pageName
+} else if (useTagLine) {
+  pageTitle = `${pageName} | ${title}`
+} else {
+  pageTitle = pageName
+}
+
+// Page slug — we assume `currentPage` is the slug, e.g., 'gallery'
+const pageSlug = currentPage === 'home' ? '' : `/${currentPage}`
+
+// Canonical URL
+const canonicalUrl = `${domain}${pageSlug}` || '/'
+
+// Generate data
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': jsonType || 'LocalBusiness',
+  '@id': `#localbusiness`,
+  name: pageTitle,
+  description: description,
+  url: canonicalUrl,
+  logo: `/images/logo.png`,
+  image: `/images/logo.png`,
+  email: email,
+  serviceArea: ['Fayetteville', 'United States'],
+  hasMap: googleMapsLink,
+  sameAs: [...socialNetworks.map((social) => social.link)],
+  areaServed: [
+    { '@type': 'AdministrativeArea', name: 'Fayetteville' },
+    { '@type': 'Country', name: 'United States' },
+  ],
+  inLanguage: 'en',
+  ...extraJson,
+}
+
+const ogTypeMap = {
+  LocalBusiness: 'website',
+  Blog: 'blog',
+  BlogPosting: 'article',
+}
+const ogType = ogTypeMap[jsonType as keyof typeof ogTypeMap] || 'website'
+---
+
+<!-- Html tags -->
+<title>{pageTitle}</title>
+<meta
+  name='description'
+  content={description}
+/>
+{
+  keywordsContent && (
+    <meta
+      name='keywords'
+      content={keywordsContent}
+    />
+  )
+}
+<meta
+  name='author'
+  content={author}
+/>
+
+<!-- Open Graph tags -->
+<meta
+  property='og:type'
+  content={ogType}
+/>
+<meta
+  property='og:title'
+  content={pageTitle}
+/>
+<meta
+  property='og:description'
+  content={description}
+/>
+<meta
+  property='og:url'
+  content={canonicalUrl}
+/>
+<meta
+  property='og:image'
+  content={image}
+/>
+
+<!-- Twitter tags -->
+<meta
+  name='twitter:card'
+  content='summary_large_image'
+/>
+<meta
+  name='twitter:site'
+  content={twitterHandle}
+/>
+<meta
+  name='twitter:title'
+  content={pageTitle}
+/>
+<meta
+  name='twitter:description'
+  content={description}
+/>
+<meta
+  name='twitter:image'
+  content={image}
+/>
+<meta
+  name='twitter:creator'
+  content='@DeveloperDari'
+/>
+
+<!-- Json Ld -->
+<script
+  type='application/ld+json'
+  set:html={JSON.stringify(jsonLd)}
+/>
+
+<!-- Sitemap -->
+<link
+  rel='sitemap'
+  href='/sitemap-index.xml'
+/>
+
+<!-- Lang -->
+<link
+  rel='canonical'
+  href={canonicalUrl}
+/>
