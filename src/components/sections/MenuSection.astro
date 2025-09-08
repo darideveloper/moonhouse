@@ -1,0 +1,43 @@
+---
+import Subtitle from "../ui/Subtitle.astro";
+import MenuItem from "../ui/ItemMenu.astro";
+
+interface MenuItemData {
+  name: string;
+  description: string;
+  price: number;
+  image: {
+    src: string;
+    alt: string;
+  };
+}
+
+interface Props {
+  title?: string;
+  items?: MenuItemData[];
+  class?: string;
+}
+
+const { title = "Our Menu", items = [], class: className } = Astro.props;
+
+const customSubtitleStyles = ["!text-4xl", "mb-4"];
+---
+
+<div class:list={["w-full", "pt-0","pb-0", "p-6", className]}>
+  <Subtitle ish2={false} iswhite={false} class:list={customSubtitleStyles}>
+    {title}
+  </Subtitle>
+
+  <div class:list={["flex", "flex-col"]}>
+    {
+      items.map((item) => (
+        <MenuItem
+          name={item.name}
+          description={item.description}
+          price={item.price}
+          image={item.image}
+        />
+      ))
+    }
+  </div>
+</div>
