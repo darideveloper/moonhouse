@@ -21,35 +21,30 @@ const {
     { day: "Sun:", hours: "8:00am - 6:00pm" },
   ],
   class: className = "",
-  lineClass = "",
 } = Astro.props;
-
-const containerStyles = ["text-white", "text-center md:text-left", className];
-
-const dayStyles = [
-  "flex",
-  "justify-center md:justify-start",
-  "items-center",
-  "mb-2",
-];
-
-const dayTextStyles = ["text-brand-orange", "font-medium"];
-
-const hoursStyles = ["text-white", "ml-2"];
 ---
 
-<div class:list={containerStyles}>
-  <SmallSubtitle
-    iswhite={true}
-    class="text-center md:text-left"
-    lineClass={lineClass}>{title}</SmallSubtitle
-  > <br>
+<div class:list={["text-white", "text-center", "md:text-left", className]}>
+  <SmallSubtitle iswhite={true} class:list={["text-center", "md:text-left"]}
+    >{title}</SmallSubtitle
+  >
+  <br />
 
   {
     schedule.map((item) => (
-      <div class:list={dayStyles}>
-        <span class:list={dayTextStyles}>{item.day}</span>
-        <span class:list={hoursStyles}>{item.hours}</span>
+      <div
+        class:list={[
+          "flex",
+          "justify-center",
+          "md:justify-start",
+          "items-center",
+          "mb-2",
+        ]}
+      >
+        <span class:list={["text-brand-orange", "font-medium"]}>
+          {item.day}
+        </span>
+        <span class:list={["text-white", "ml-2"]}>{item.hours}</span>
       </div>
     ))
   }
