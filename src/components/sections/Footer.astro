@@ -2,7 +2,7 @@
 import SmallSubtitle from "../ui/SmallSubtitle.astro";
 import Subtitle from "../ui/Subtitle.astro";
 import Link from "../ui/Link.astro";
-import IconLink from "../ui/Icon";
+import IconLink from "../ui/Icon.astro";
 import Schedule from "../ui/Schedule.astro";
 
 const contactData = {
@@ -86,19 +86,19 @@ const whatsappNumber = "+4494340035";
     <div
       class:list={[
         "grid",
-        "grid-cols-1",
-        "md:flex",
+        "grid-cols-1 md:flex",
         "md:justify-between",
         "mb-12",
-        "text-center",
-        "md:text-left",
+        "text-center md:text-left",
       ]}
     >
       <div class:list={["space-y-4"]}>
         <SmallSubtitle
           iswhite={true}
-          class:list={["text-center", "md:text-left"]}>CONTACT</SmallSubtitle
-        ><br />
+          class:list={["text-center md:text-left", "pb-1"]}
+        >
+          CONTACT
+        </SmallSubtitle>
         <div>
           <p class:list={["text-white", "mb-2"]}>{contactData.address}</p>
           <p class:list={["text-brand-orange", "mb-2"]}>
@@ -115,7 +115,7 @@ const whatsappNumber = "+4494340035";
         <div
           class:list={[
             "flex",
-            "gap-3",
+            "gap-0",
             "mt-4",
             "justify-center md:justify-start",
           ]}
@@ -133,8 +133,8 @@ const whatsappNumber = "+4494340035";
         </div>
       </div>
 
-      <div class:list={["space-y-4"]}>
-        <Subtitle iswhite={true}><br /><br /><br />Moonhouse</Subtitle>
+      <div class:list={["space-y-4", "pt-14"]}>
+        <Subtitle iswhite={true}>Moonhouse</Subtitle>
         <p class:list={["text-brand-white"]}>Get news & offers events.</p>
       </div>
 
