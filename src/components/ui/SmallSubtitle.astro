@@ -12,12 +12,19 @@ const baseStyles = [
   "!font-normal",
   "tracking-wide",
   iswhite ? "text-white" : "text-black",
-  "px-2"
+  "px-2",
 ];
 const lineStyles = ["w-full", "h-px", "bg-brand-orange"];
 ---
 
-<div class:list={["inline-block", "flex-col", "items-center md:items-start", className]}>
+<div
+  class:list={[
+    "inline-block",
+    "flex-col",
+    "items-center md:items-start",
+    className,
+  ]}
+>
   <div class:list={lineStyles}></div>
 
   {
