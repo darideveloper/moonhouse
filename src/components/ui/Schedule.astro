@@ -24,11 +24,12 @@ const {
 } = Astro.props;
 ---
 
-<div class:list={["text-white", "text-center", "md:text-left", className]}>
-  <SmallSubtitle iswhite={true} class:list={["text-center", "md:text-left"]}
-    >{title}</SmallSubtitle
-  >
-  <br />
+<div class:list={["text-white", "text-center md:text-left", className]}>
+  <SmallSubtitle
+    iswhite={true}
+    class:list={["text-center md:text-left", "pb-5"]}
+    >{title}
+  </SmallSubtitle>
 
   {
     schedule.map((item) => (
