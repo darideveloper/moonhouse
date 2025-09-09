@@ -1,58 +1,45 @@
 ---
-import Subtitle from '../ui/Subtitle.astro'
+import Title from "../ui/Subtitle.astro";
 
 interface Props {
-  name?: string
-  description?: string
-  price?: number
+  name?: string;
+  description?: string;
+  price?: number;
   image?: {
-    src: string
-    alt: string
-  }
-  class?: string
+    src: string;
+    alt: string;
+  };
+  class?: string;
 }
 
 const {
-  name = 'Try Our Special Offers',
+  name = "Try Our Special Offers",
   description = "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making it look like readable English.",
   price = 10,
-  image = { src: '/images/durazno.webp', alt: 'Special offer image' },
-  class: className = '',
-} = Astro.props
-
-const sectionStyles = [
-  'max-w-md',
-  'mx-auto',
-  'p-4',
-  'bg-white',
-  'p-6',
-  className,
-]
-
-const descriptionStyles = [
-  'text-base',
-  'leading-relaxed',
-  'text-brand-black',
-  'mb-4',
-]
-
-const imageStyles = ['w-full', 'h-auto', 'mt-4', 'rounded-lg']
-
-const customSubtitleStyles = ['!text-4xl', '!font-bold', '!text-black']
+  image = { src: "/images/durazno.webp", alt: "Special offer image" },
+  class: className = "",
+} = Astro.props;
 ---
 
-<section class:list={sectionStyles}>
-  <Subtitle
+<section class:list={["max-w-md", "mx-auto", "p-4", "bg-white", className]}>
+  <Title
     ish2={false}
     iswhite={false}
-    class:list={customSubtitleStyles}
+    class:list={["!text-4xl", "!font-bold", "!text-black"]}
   >
     {name}
-  </Subtitle>
+  </Title>
 
-  <p class:list={descriptionStyles}>
+  <p
+    class:list={[
+      "text-base",
+      "leading-relaxed",
+      "text-brand-black",
+      "mb-4",
+      "pb-1",
+    ]}
+  >
     {description}
-    <br />
     <span
       class:list={`
         italic
@@ -65,6 +52,6 @@ const customSubtitleStyles = ['!text-4xl', '!font-bold', '!text-black']
   <img
     src={image.src}
     alt={image.alt}
-    class:list={imageStyles}
+    class:list={["w-full", "h-auto", "mt-4", "rounded-lg"]}
   />
 </section>
