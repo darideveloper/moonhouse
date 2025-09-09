@@ -1,45 +1,29 @@
 ---
-import SmallSubtitle from '../ui/SmallSubtitle.astro'
-import SpecialOffer from '../ui/SpecialOffer.astro'
+import SmallSubtitle from "../ui/SmallSubtitle.astro";
+import SpecialOffer from "../ui/SpecialOffer.astro";
 
 interface Product {
-  name: string
-  description: string
-  price: number
+  name: string;
+  description: string;
+  price: number;
   image: {
-    src: string
-    alt: string
-  }
+    src: string;
+    alt: string;
+  };
 }
 
 interface Props {
-  smallsubtitle?: string
-  products?: Product[]
-  class?: string
+  Title?: string;
+  products?: Product[];
+  class?: string;
 }
 
-const {
-  smallsubtitle = 'Menu',
-  products = [],
-  class: className = '',
-} = Astro.props
-
-const sectionStyles = [
-  'max-w-md',
-  'mx-auto',
-  'bg-white',
-  'p-6',
-  'pt-0',
-  className,
-]
+const { Title = "Menu", products = [], class: className = "" } = Astro.props;
 ---
 
-<section class:list={sectionStyles}>
-  <SmallSubtitle
-    ish2={true}
-    iswhite={false}
-  >
-    {smallsubtitle}
+<section class:list={["max-w-md", "mx-auto", "bg-white", "pt-0", className]}>
+  <SmallSubtitle ish2={true} iswhite={false}>
+    {Title}
   </SmallSubtitle>
 
   {
