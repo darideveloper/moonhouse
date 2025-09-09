@@ -7,7 +7,7 @@ import MenuSection from "../components/sections/MenuSection.astro";
 import Footer from "../components/sections/Footer.astro";
 
 const specialOffersData = {
-  smallsubtitle: "Menu",
+  Title: "Menu",
   products: [
     {
       name: "Try Our Special Offers",
@@ -66,37 +66,37 @@ const mainDishData = {
       price: 40,
       image: { src: "/images/durazno.webp", alt: "Grilled Salmon" },
     },
-        {
+    {
       name: "Grilled Salmon with Dil Sauce",
       description: "Candied Jerusalem artichokes, truffle",
       price: 40,
       image: { src: "/images/durazno.webp", alt: "Grilled Salmon" },
     },
-        {
+    {
       name: "Grilled Salmon with Dil Sauce",
       description: "Candied Jerusalem artichokes, truffle",
       price: 40,
       image: { src: "/images/durazno.webp", alt: "Grilled Salmon" },
     },
-        {
+    {
       name: "Grilled Salmon with Dil Sauce",
       description: "Candied Jerusalem artichokes, truffle",
       price: 40,
       image: { src: "/images/durazno.webp", alt: "Grilled Salmon" },
     },
-        {
+    {
       name: "Grilled Salmon with Dil Sauce",
       description: "Candied Jerusalem artichokes, truffle",
       price: 40,
       image: { src: "/images/durazno.webp", alt: "Grilled Salmon" },
     },
-        {
+    {
       name: "Grilled Salmon with Dil Sauce",
       description: "Candied Jerusalem artichokes, truffle",
       price: 40,
       image: { src: "/images/durazno.webp", alt: "Grilled Salmon" },
     },
-        {
+    {
       name: "Grilled Salmon with Dil Sauce",
       description: "Candied Jerusalem artichokes, truffle",
       price: 40,
@@ -117,25 +117,28 @@ const mainDishData = {
       "px-4",
       "py-16",
       "grid",
-      "grid-cols-1",
-      "md:grid-cols-3",
+      "grid-cols-1 md:grid-cols-5 lg:grid-cols-12",
       "gap-16",
       "justify-center md:justify-start",
       "gap-16",
       "items-center md:items-start",
     ]}
   >
-    {}
-    <div class:list={["md:col-span-1"]}>
+    <div class:list={["md:col-span-2 lg:col-span-5"]}>
       <SpecialOffers
-        smallsubtitle={specialOffersData.smallsubtitle}
+        Title={specialOffersData.Title}
         products={specialOffersData.products}
       />
     </div>
 
-    {}
-    <div class:list={["flex", "flex-col", "gap-12", "md:col-span-2", "pt-14"]}>
-      {}
+    <div
+      class:list={[
+        "flex",
+        "flex-col md:col-span-3  lg:col-span-7",
+        "gap-12",
+        "pt-14",
+      ]}
+    >
       <MenuSection title={startersData.title} items={startersData.items} />
       <MenuSection title={mainDishData.title} items={mainDishData.items} />
     </div>
