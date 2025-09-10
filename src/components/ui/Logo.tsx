@@ -26,10 +26,10 @@ export default function Logo({ handleNav, isNavOpen }: LogoProps) {
           <img
             src="/images/logo.png"
             alt="Logo"
-            // DARIDEV: fix size to align menu items
+            // DARIDEV: fix size to align menu items ind esktop
             className={clsx(
-              "w-22",
-              "h-22"
+              "w-16 lg:w-22",
+              "h-16 lg:h-22"
             )}
           />
         </a>
