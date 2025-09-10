@@ -1,0 +1,18 @@
+export type DayCode = "MO" | "TU" | "WE" | "TH" | "FR" | "SA" | "SU";
+
+export interface OpeningHour {
+    id: number;
+    status: "published" | "draft" | "archived";
+    day: DayCode;
+    start_hour: string;
+    end_hour: string;
+}
+
+export interface OpeningHoursResponse {
+    data: OpeningHour[];
+}
+
+export interface FormattedSchedule {
+    day: string;
+    hours: string;
+}
