@@ -1,13 +1,11 @@
 ---
-import SmallSubtitle from "../ui/SmallSubtitle.astro";
-import Subtitle from "../ui/Subtitle.astro";
-import Link from "../ui/Link.astro";
-import IconLink from "../ui/Icon.astro";
-import Schedule from "../ui/Schedule.astro";
-import { getOpeningHours } from "../../lib/api/scheduleapi";
-import { groupOpeningHours } from "../../lib/utils/formatschedule";
+import SmallSubtitle from '../ui/SmallSubtitle.astro'
+import Subtitle from '../ui/Subtitle.astro'
+import Link from '../ui/Link.astro'
+import IconLink from '../ui/Icon.astro'
+import Schedule from '../ui/Schedule.astro'
 
-import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 
 const contactData = {
   address: '5 Rue Dalou, 75015 Paris',
@@ -29,12 +27,9 @@ const socialLinks = [
   { iconName: 'tiktok', href: 'https://tiktok.com/@example' },
 ]
 
-const spotifyPlaylistId = "37i9dQZF1DX0XUsuxWHRQd";
-const spotifyEmbedUrl = `https://open.spotify.com/embed/playlist/${spotifyPlaylistId}?utm_source=generator&theme=0`;
-const whatsappNumber = "+4494340035";
-
-const openingHoursData = await getOpeningHours();
-const workingHours = groupOpeningHours(openingHoursData);
+const spotifyPlaylistId = '37i9dQZF1DX0XUsuxWHRQd'
+const spotifyEmbedUrl = `https://open.spotify.com/embed/playlist/${spotifyPlaylistId}?utm_source=generator&theme=0`
+const whatsappNumber = '+4494340035'
 ---
 
 <div
@@ -58,7 +53,7 @@ const workingHours = groupOpeningHours(openingHoursData);
       ]}
     >
       <iframe
-        title="Spotify Playlist"
+        title='Spotify Playlist'
         src={spotifyEmbedUrl}
         width='100%'
         height='360'
@@ -105,33 +100,40 @@ const workingHours = groupOpeningHours(openingHoursData);
         </SmallSubtitle>
 
         <div>
-          <p class:list={["text-white", "mb-2"]}>{contactData.address}</p>
-          <p class:list={["text-brand-orange", "mb-2"]}>
-            Call - <Link href={`tel:${contactData.phone}`} openInNewTab={false}
+          <p class:list={['text-white', 'mb-2']}>{contactData.address}</p>
+          <p class:list={['text-brand-orange', 'mb-2']}>
+            Call - <Link
+              href={`tel:${contactData.phone}`}
+              openInNewTab={false}
               >{contactData.phone}</Link
             >
           </p>
-          <p class:list={["text-brand-orange"]}>
-            <Link href={`mailto:${contactData.email}`} openInNewTab={false}
+          <p class:list={['text-brand-orange']}>
+            <Link
+              href={`mailto:${contactData.email}`}
+              openInNewTab={false}
               >{contactData.email}</Link
             >
           </p>
         </div>
         <div
           class:list={[
-            "flex",
-            "gap-3",
-            "mt-4",
-            "justify-center md:justify-start",
+            'flex',
+            'gap-3',
+            'mt-4',
+            'justify-center md:justify-start',
           ]}
         >
           {
             socialLinks.map((social) => (
-              <IconLink href={social.href} openInNewTab={true}>
-                {social.iconName === "instagram" && <FaInstagram client:load />}
-                {social.iconName === "facebook" && <FaFacebook client:load />}
-                {social.iconName === "whatsapp" && <FaWhatsapp client:load />}
-                {social.iconName === "tiktok" && <FaTiktok client:load />}
+              <IconLink
+                href={social.href}
+                openInNewTab={true}
+              >
+                {social.iconName === 'instagram' && <FaInstagram client:load />}
+                {social.iconName === 'facebook' && <FaFacebook client:load />}
+                {social.iconName === 'whatsapp' && <FaWhatsapp client:load />}
+                {social.iconName === 'tiktok' && <FaTiktok client:load />}
               </IconLink>
             ))
           }
@@ -144,10 +146,14 @@ const workingHours = groupOpeningHours(openingHoursData);
       </div>
 
       <div class:list={['space-y-4']}>
-        <Schedule
-          title='WORKING HOURS'
-          schedule={workingHours}
-        />
+        <SmallSubtitle
+          iswhite={true}
+          class:list={['text-center', 'md:text-left']}
+        >
+          WORKING HOURS
+        </SmallSubtitle>
+        <!-- DARIDEV: keep only schedule inside component (to reuse it) -->
+        <Schedule />
       </div>
     </div>
 

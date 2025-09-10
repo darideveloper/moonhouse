@@ -2,11 +2,10 @@
 export interface Props {
   icon: any
   title: string
-  description: string
   link?: string
 }
 
-const { icon: IconComponent, title, description, link } = Astro.props
+const { icon: IconComponent, title, link } = Astro.props
 ---
 
 <article
@@ -21,7 +20,7 @@ const { icon: IconComponent, title, description, link } = Astro.props
   ]}
 >
   <a
-    href={link || '#'}
+    href={link || ''}
     class:list={[
       'flex',
       'flex-col lg:flex-row',
@@ -64,13 +63,7 @@ const { icon: IconComponent, title, description, link } = Astro.props
       <h2 class:list={['text-center lg:text-left', 'text-2xl', 'font-bold', 'mb-2']}>
         {title}
       </h2>
-      {
-        description && (
-          <p class:list={['text-gray-300', 'leading-relaxed', 'mb-2']}>
-            {description}
-          </p>
-        )
-      }
+      <slot />
     </div>
   </a>
 </article>

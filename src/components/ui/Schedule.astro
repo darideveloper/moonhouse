@@ -1,5 +1,10 @@
 ---
+// Components
 import SmallSubtitle from '../ui/SmallSubtitle.astro'
+
+// Libs
+import { getOpeningHours } from '../../lib/api/scheduleapi'
+import { groupOpeningHours } from '../../lib/utils/formatschedule'
 
 interface ScheduleDay {
   day: string
@@ -14,27 +19,17 @@ interface Props {
 }
 
 const {
-  title = 'WORKING HOURS',
-  schedule = [
-    { day: 'Mon - Fri:', hours: '7:00am - 6:00pm' },
-    { day: 'Sat:', hours: '7:00am - 6:00pm' },
-    { day: 'Sun:', hours: '8:00am - 6:00pm' },
-  ],
   class: className = '',
 } = Astro.props
+
+// DARIDEV: call data inside component
+const openingHoursData = await getOpeningHours()
+const workingHours = groupOpeningHours(openingHoursData)
 ---
 
 <div class:list={['text-white', 'text-center', 'md:text-left', className]}>
-  <SmallSubtitle
-    iswhite={true}
-    class:list={['text-center', 'md:text-left']}
-  >
-    {title}
-  </SmallSubtitle>
-  <br />
-
   {
-    schedule.map((item) => (
+    workingHours.map((item) => (
       <div
         class:list={[
           'flex',

@@ -1,10 +1,19 @@
 ---
+// DARIDEV: organize imports
+
+// Components
 import AboutCard from '../ui/AboutCard.astro'
 import CardInfo from '../ui/CardInfo.astro'
+import Schedule from '../ui/Schedule.astro'
+
+// Icons
 import { IoLocationOutline, IoReceiptOutline } from 'react-icons/io5'
 import { IoTimeOutline } from 'react-icons/io5'
 import { IoCalendarOutline } from 'react-icons/io5'
+
+// Libs
 import { infoCards } from '../../data/api/BaseAPI'
+
 // Icon mapping
 const iconMap: Record<string, any> = {
   location: IoLocationOutline,
@@ -47,9 +56,19 @@ const cardData: CardData[] = await infoCards()
           <AboutCard
             icon={iconMap[card.iconName]}
             title={card.title}
-            description={card.description}
             link={card.link}
-          />
+          >
+            {
+              // Synamic render schedules or text
+              card.description === '{{schedule}}' ? (
+                <Schedule />
+              ) : (
+                <p class:list={['text-gray-300', 'leading-relaxed', 'mb-2']}>
+                  {card.description}
+                </p>
+              )
+            }
+          </AboutCard>
         ))
       }
     </div>
