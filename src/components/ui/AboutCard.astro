@@ -1,77 +1,76 @@
 ---
 export interface Props {
-  icon: any;
-  title: string;
-  description: string;
-  link?: string;
+  icon: any
+  title: string
+  description: string
+  link?: string
 }
 
-const { icon: IconComponent, title, description, link } = Astro.props;
+const { icon: IconComponent, title, description, link } = Astro.props
 ---
 
 <article
   class:list={[
-    "flex",
-    "items-start",
-    "gap-6",
-    "text-white",
-    "w-full",
-    "max-w-md lg:max-w-none",
-    "mx-auto lg:mx-0"
+    'flex',
+    'items-start',
+    'gap-6',
+    'text-white',
+    'w-full lg:w-auto',
+    'max-w-md lg:max-w-none',
+    'mx-auto lg:mx-0',
   ]}
 >
   <a
-    href={link || "#"}
+    href={link || '#'}
     class:list={[
-      "flex",
-      "items-start",
-      "gap-6",
-      "w-full",
-      "text-white",
-      "no-underline",
-      link && link !== "#" ? "cursor-pointer" : "cursor-default pointer-events-none",
+      'flex',
+      'flex-col lg:flex-row',
+      'items-center lg:items-start',
+      'gap-6',
+      'w-full',
+      'text-white',
+      'no-underline',
+      link && link !== '#'
+        ? 'cursor-pointer'
+        : 'cursor-default pointer-events-none',
     ]}
   >
     <div
       class:list={[
-        "flex-shrink-0",
-        "w-16",
-        "h-16",
-        "bg-white",
-        "rounded-full",
-        "flex",
-        "items-center",
-        "justify-center",
+        'flex-shrink-0',
+        'w-16',
+        'h-16',
+        'bg-white',
+        'rounded-full',
+        'flex',
+        'items-center',
+        'justify-center',
       ]}
     >
       <div
         class:list={[
-          "w-8",
-          "h-8",
-          "flex",
-          "items-center",
-          "justify-center",
-          "text-black",
+          'w-8',
+          'h-8',
+          'flex',
+          'items-center',
+          'justify-center',
+          'text-black',
         ]}
       >
         <IconComponent size={32} />
       </div>
     </div>
-    <div class:list={["flex-1"]}>
-      <h2 class:list={["text-2xl", "font-bold", "mb-2"]}>
+    <div class:list={['flex-1']}>
+      <h2 class:list={['text-center lg:text-left', 'text-2xl', 'font-bold', 'mb-2']}>
         {title}
       </h2>
-      {description && (
-        <p
-          class:list={[
-            "text-gray-300",
-            "leading-relaxed",
-            "mb-2"
-          ]}
-        >
-          {description}
-        </p>
-      )}
+      {
+        description && (
+          <p class:list={['text-gray-300', 'leading-relaxed', 'mb-2']}>
+            {description}
+          </p>
+        )
+      }
     </div>
   </a>
 </article>
