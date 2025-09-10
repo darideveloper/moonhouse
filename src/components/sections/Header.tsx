@@ -14,9 +14,9 @@ export default function Header(): React.JSX.Element {
 
   const navLinks = [
     { href: '/', label: 'HOME' },
-    { href: '/', label: 'ABOUT' },
-    { href: '/', label: 'MENU' },
-    { href: '/', label: 'GALLERY' },
+    { href: '#about', label: 'ABOUT' },
+    { href: '#menu', label: 'MENU' },
+    { href: '#gallery', label: 'GALLERY' },
   ]
 
   return (
