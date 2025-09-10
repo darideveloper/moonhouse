@@ -1,16 +1,45 @@
 ---
-console.log("Hero");
+import GradiantSeparator from '../ui/GradiantSeparator.astro'
 ---
 
-<div
+<!-- DARIDEV: section added -->
+<section
+  id='hero'
   class:list={[
-    "absolute",
-    "inset-0",
-    "bg-[url('/surface_moon_hero_mobile.png')] lg:bg-[url('/surface_moon_hero.png')]",
-    "bg-cover",
-    "bg-center",
-    "bg-no-repeat",
-    "z-[-10]",
+    'relative',
+    'h-[30vh] sm:h-[40vh] md:h-[60vh] lg:h-screen',
   ]}
 >
-</div>
+  <!-- DARIDEV: gradiants in hero instead of header
+   (with component) in order to have top and bottom gradient -->
+  <!-- Gradiant bg top top -->
+  <GradiantSeparator class='top-0' />
+
+  <!-- Image bg -->
+  <div
+    class:list={[
+      'absolute',
+      'inset-0',
+      // DARIDEV: Image in 'images' folder
+      "bg-[url('/images/hero.webp')]",
+      'bg-cover',
+      'bg-center',
+      'bg-no-repeat',
+      '-z-10',
+      'animate-pulse'
+    ]}
+  />
+
+  <!-- Blac background -->
+  <div
+    class:list={[
+      'absolute',
+      'inset-0',
+      'bg-black',
+      '-z-20',
+    ]}
+  />
+
+  <!-- Gradiant bg top top -->
+  <GradiantSeparator class='bottom-0 rotate-180' />
+</section>

@@ -20,7 +20,8 @@ export default function Header(): React.JSX.Element {
   ]
 
   return (
-    <div className={clsx('relative', 'h-screen')}>
+    // DARIDEV: nor using header tag
+    <header className={clsx('relative')}>
       {/* Gradient background */}
       <div
         className={clsx(
@@ -28,10 +29,8 @@ export default function Header(): React.JSX.Element {
           'top-0',
           'left-0',
           'right-0',
-          'z-10',
+          'z-20',
           'py-10',
-          'bg-gradient-to-b',
-          'from-black via-black/50 to-transparent',
           'h-40'
         )}
       >
@@ -86,6 +85,6 @@ export default function Header(): React.JSX.Element {
           </div>
         </nav>
       </div>
-    </div>
+    </header>
   )
 }
