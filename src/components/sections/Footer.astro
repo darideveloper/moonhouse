@@ -4,6 +4,10 @@ import Subtitle from "../ui/Subtitle.astro";
 import Link from "../ui/Link.astro";
 import IconLink from "../ui/Icon.astro";
 import Schedule from "../ui/Schedule.astro";
+import { getOpeningHours } from "../../lib/api/scheduleapi";
+import { groupOpeningHours } from "../../lib/utils/formatschedule";
+
+import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from "react-icons/fa";
 
 const contactData = {
   address: "5 Rue Dalou, 75015 Paris",
@@ -27,14 +31,10 @@ const socialLinks = [
 
 const spotifyPlaylistId = "37i9dQZF1DX0XUsuxWHRQd";
 const spotifyEmbedUrl = `https://open.spotify.com/embed/playlist/${spotifyPlaylistId}?utm_source=generator&theme=0`;
-
-const workingHours = [
-  { day: "Mon - Fri:", hours: "7:00am - 6:00pm" },
-  { day: "Sat:", hours: "7:00am - 6:00pm" },
-  { day: "Sun:", hours: "8:00am - 6:00pm" },
-];
-
 const whatsappNumber = "+4494340035";
+
+const openingHoursData = await getOpeningHours();
+const workingHours = groupOpeningHours(openingHoursData);
 ---
 
 <div
@@ -58,6 +58,7 @@ const whatsappNumber = "+4494340035";
       ]}
     >
       <iframe
+        title="Spotify Playlist"
         src={spotifyEmbedUrl}
         width="100%"
         height="360"
@@ -102,32 +103,32 @@ const whatsappNumber = "+4494340035";
         <div>
           <p class:list={["text-white", "mb-2"]}>{contactData.address}</p>
           <p class:list={["text-brand-orange", "mb-2"]}>
-            Call - <Link href={`tel:${contactData.phone}`} openInNewTab={false}>
-              {contactData.phone}
-            </Link>
+            Call - <Link href={`tel:${contactData.phone}`} openInNewTab={false}
+              >{contactData.phone}</Link
+            >
           </p>
           <p class:list={["text-brand-orange"]}>
-            <Link href={`mailto:${contactData.email}`} openInNewTab={false}>
-              {contactData.email}
-            </Link>
+            <Link href={`mailto:${contactData.email}`} openInNewTab={false}
+              >{contactData.email}</Link
+            >
           </p>
         </div>
         <div
           class:list={[
             "flex",
-            "gap-0",
+            "gap-3",
             "mt-4",
             "justify-center md:justify-start",
           ]}
         >
           {
             socialLinks.map((social) => (
-              <IconLink
-                iconName={social.iconName}
-                href={social.href}
-                openInNewTab={true}
-                client:load
-              />
+              <IconLink href={social.href} openInNewTab={true}>
+                {social.iconName === "instagram" && <FaInstagram client:load />}
+                {social.iconName === "facebook" && <FaFacebook client:load />}
+                {social.iconName === "whatsapp" && <FaWhatsapp client:load />}
+                {social.iconName === "tiktok" && <FaTiktok client:load />}
+              </IconLink>
             ))
           }
         </div>
