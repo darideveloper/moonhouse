@@ -21,7 +21,7 @@ export default function Header(): React.JSX.Element {
 
   return (
     // DARIDEV: nor using header tag
-    <header className={clsx('relative')}>
+    <header className={clsx('relative', 'container')}>
       {/* Gradient background */}
       <div
         className={clsx(
@@ -34,7 +34,13 @@ export default function Header(): React.JSX.Element {
           'h-40'
         )}
       >
-        <nav className={clsx('w-[90%] md:w-[80%] lg:w-[65%]', 'mx-auto')}>
+        <nav
+          className={clsx(
+            'w-[90%] md:w-[80%] lg:w-[65%]',
+            'mx-auto',
+            'pl-0 lg:pl-18'
+          )}
+        >
           <Logo
             handleNav={handleNav}
             isNavOpen={isNavOpen}
