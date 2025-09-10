@@ -1,23 +1,11 @@
 ---
-import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from "react-icons/fa";
-
 interface Props {
-  iconName: string;
   href: string;
   openInNewTab?: boolean;
   className?: string;
 }
 
-const { iconName, href, openInNewTab = false, className } = Astro.props;
-
-const iconMap = {
-  instagram: FaInstagram,
-  facebook: FaFacebook,
-  tiktok: FaTiktok,
-  whatsapp: FaWhatsapp,
-};
-
-const IconComponent = iconMap[iconName as keyof typeof iconMap];
+const { href, openInNewTab = false, className } = Astro.props;
 ---
 
 <a
@@ -31,32 +19,11 @@ const IconComponent = iconMap[iconName as keyof typeof iconMap];
     "inline-flex",
     "items-center",
     "justify-center",
-    "w-5",
-    "h-5",
+    "w-10",
+    "h-10",
     "rounded-full",
     className,
   ]}
 >
-  <IconComponent size={24} />
+  <slot />
 </a>
-{
-  (
-    <a
-      href={href}
-      target={openInNewTab ? "_blank" : undefined}
-      rel={openInNewTab ? "noopener noreferrer" : undefined}
-      class:list={[
-        "text-brand-orange hover:text-brand-white",
-        "transition-colors",
-        "duration-200",
-        "inline-flex",
-        "items-center",
-        "justify-center",
-        "w-10",
-        "h-10",
-        "rounded-full",
-        className,
-      ]}
-    />
-  )
-}
