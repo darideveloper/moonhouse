@@ -1,0 +1,140 @@
+---
+import SpecialOffers from '../sections/SpecialOffers.astro'
+import MenuItems from '../sections/MenuItems.astro'
+
+const specialOffersData = {
+  smallsubtitle: 'Menu',
+  products: [
+    {
+      name: 'Try Our Special Offers',
+      price: 10,
+      description:
+        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making it look like readable English.",
+      image: {
+        src: '/images/durazno.webp',
+        alt: 'Pastel con duraznos',
+      },
+    },
+
+    {
+      name: 'Try Our Special Offers',
+      price: 10,
+      description:
+        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making it look like readable English.",
+      image: {
+        src: '/images/durazno.webp',
+        alt: 'Pastel con duraznos',
+      },
+    },
+  ],
+}
+
+const startersData = {
+  title: 'Starters',
+  items: [
+    {
+      name: 'Raw Scallops from Erquy',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 40,
+      image: { src: '/images/durazno.webp', alt: 'Raw Scallops' },
+    },
+    {
+      name: 'Spring Roll',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 20,
+      image: { src: '/images/durazno.webp', alt: 'Spring Roll' },
+    },
+    {
+      name: 'French Onion Soup',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 25,
+      image: { src: '/images/durazno.webp', alt: 'French Onion Soup' },
+    },
+  ],
+}
+
+const mainDishData = {
+  title: 'Main Dish',
+  items: [
+    {
+      name: 'Grilled Salmon with Dil Sauce',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 40,
+      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
+    },
+    {
+      name: 'Grilled Salmon with Dil Sauce',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 40,
+      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
+    },
+    {
+      name: 'Grilled Salmon with Dil Sauce',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 40,
+      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
+    },
+    {
+      name: 'Grilled Salmon with Dil Sauce',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 40,
+      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
+    },
+    {
+      name: 'Grilled Salmon with Dil Sauce',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 40,
+      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
+    },
+    {
+      name: 'Grilled Salmon with Dil Sauce',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 40,
+      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
+    },
+    {
+      name: 'Grilled Salmon with Dil Sauce',
+      description: 'Candied Jerusalem artichokes, truffle',
+      price: 40,
+      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
+    },
+  ],
+}
+---
+
+<div
+  class:list={[
+    'container',
+    'mx-auto',
+    'px-4',
+    'py-16',
+    'grid',
+    'grid-cols-1',
+    'md:grid-cols-3',
+    'gap-16',
+    'justify-center md:justify-start',
+    'gap-16',
+    'items-center md:items-start',
+  ]}
+>
+  {}
+  <div class:list={['md:col-span-1']}>
+    <SpecialOffers
+      smallsubtitle={specialOffersData.smallsubtitle}
+      products={specialOffersData.products}
+    />
+  </div>
+
+  {}
+  <div class:list={['flex', 'flex-col', 'gap-12', 'md:col-span-2', 'pt-14']}>
+    {}
+    <MenuItems
+      title={startersData.title}
+      items={startersData.items}
+    />
+    <MenuItems
+      title={mainDishData.title}
+      items={mainDishData.items}
+    />
+  </div>
+</div>
