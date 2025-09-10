@@ -36,7 +36,7 @@ export default function Gallery() {
   </button>
 
   return (
-    <section className={clsx('bg-black', 'py-20')}>
+    <section className={clsx('bg-black', 'py-20')} id="gallery">
       <div className={clsx('max-w-7xl', 'mx-auto', 'my-10')}>
         <h2
           className={clsx(

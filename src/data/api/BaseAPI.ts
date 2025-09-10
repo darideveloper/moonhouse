@@ -1,6 +1,6 @@
-import { domain } from "../setup";
+import { baseApi } from "../setup";
 
-const baseAPI = `${domain}`;
+const baseAPI = `${baseApi}`;
 
 
 const fetchAPI = async (endpoint: string) => {
