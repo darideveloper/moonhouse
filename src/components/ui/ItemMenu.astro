@@ -31,18 +31,10 @@ const imageStyles = [
   <img src={image.src} alt={image.alt} class:list={imageStyles} />
 
   <div class:list={["flex w-full flex-col"]}>
-    <h4
-      class:list={[
-        "text-base md:text-3xl",
-        "!font-light",
-        "text-brand-black",
-      ]}
-    >
-      {name}
-    </h4>
+    <p class:list={["text-base md:text-3xl", "!font-light","text-brand-black"]}>{name}</p>
 
-    <div class:list={["flex", "w-full", "items-baseline", "gap-4", "mt-0"]}>
-      <p class:list={["text-sm", "text-gray-500"]}>{description}</p>
+    <div class:list={["flex w-full items-baseline gap-4"]}>
+      <p class:list={["text-sm text-gray-500"]}>{description}</p>
 
       <div
         class:list={[

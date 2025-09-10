@@ -29,7 +29,7 @@ const { icon: IconComponent, title, description, link } = Astro.props;
       "w-full",
       "text-white",
       "no-underline",
-      link && link !== "#" ? "cursor-pointer" : "cursor-default",
+      link && link !== "#" ? "cursor-pointer" : "cursor-default pointer-events-none",
     ]}
   >
     <div
@@ -71,18 +71,6 @@ const { icon: IconComponent, title, description, link } = Astro.props;
         >
           {description}
         </p>
-      )}
-      {link && link.startsWith('mailto:') && (
-        <span
-          class:list={[
-            "text-gray-300 hover:text-white",
-            "transition-colors",
-            "duration-200",
-            "underline"
-          ]}
-        >
-          {link.replace('mailto:', '')}
-        </span>
       )}
     </div>
   </a>

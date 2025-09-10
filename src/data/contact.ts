@@ -3,7 +3,7 @@ export const phoneUnformatted = '+14790000000'
 export const email = 'info@moonhouse.example'
 
 export const addressElems = {
-  streetAddress: '123 Sample St',
+  streetAddress: '123 ',
   addressLocality: 'Fayetteville',
   addressRegion: 'AR',
   postalCode: '72701',

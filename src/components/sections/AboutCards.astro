@@ -1,10 +1,10 @@
 ---
 import AboutCard from '../ui/AboutCard.astro'
 import CardInfo from '../ui/CardInfo.astro'
-import { IoLocationOutline } from 'react-icons/io5'
+import { IoLocationOutline, IoReceiptOutline } from 'react-icons/io5'
 import { IoTimeOutline } from 'react-icons/io5'
 import { IoCalendarOutline } from 'react-icons/io5'
-
+import { infoCards } from '../../data/api/BaseAPI'
 // Icon mapping
 const iconMap: Record<string, any> = {
   location: IoLocationOutline,
@@ -12,6 +12,7 @@ const iconMap: Record<string, any> = {
   clock: IoTimeOutline,
   calendar: IoCalendarOutline,
   reservations: IoCalendarOutline,
+  invoice: IoReceiptOutline,
 }
 
 // Card data interface
@@ -23,26 +24,10 @@ interface CardData {
 }
 
 // JSON data to display on the page
-const cardData: CardData[] = [
-  {
-    iconName: 'location',
-    title: 'Locate Us',
-    description: 'Riverside 25, San Francisco, California',
-    link: '#location',
-  },
-  {
-    iconName: 'clock',
-    title: 'Open Hours',
-    description: 'Mon To Fri 9:00 AM - 9:00 PM',
-    link: '#openhours',
-  },
-  {
-    iconName: 'reservations',
-    title: 'Reservations',
-    description: '',
-    link: 'mailto:hirestaurantate@gmail.com',
-  },
-]
+const cardData: CardData[] = await infoCards()
+
+console.log(cardData)
+
 ---
 
 <section class:list={['bg-black', 'py-20']}>
