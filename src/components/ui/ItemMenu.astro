@@ -1,53 +1,66 @@
 ---
 interface Props {
-  name?: string;
-  description?: string;
-  price?: number;
+  name?: string
+  description?: string
+  price?: number
   image?: {
-    src: string;
-    alt: string;
-  };
-  class?: string;
+    src: string
+    alt: string
+  }
+  class?: string
 }
 
 const {
-  name = "Default Item",
-  description = "Default description for the menu item.",
+  name = 'Default Item',
+  description = 'Default description for the menu item.',
   price = 0,
-  image = { src: "/images/durazno.webp", alt: "Default menu item image" },
+  image = { src: '/images/durazno.webp', alt: 'Default menu item image' },
   class: className,
-} = Astro.props;
+} = Astro.props
 
 const imageStyles = [
-  "w-20",
-  "h-20",
-  "rounded-full",
-  "object-cover",
-  "flex-shrink-0",
-];
+  'w-20',
+  'h-20',
+  'rounded-full',
+  'object-cover',
+  'flex-shrink-0',
+]
 ---
 
-<div class:list={["flex w-full items-center gap-4 py-4", className]}>
-  <img src={image.src} alt={image.alt} class:list={imageStyles} />
+<div class:list={['flex w-full items-center gap-4 py-4', className]}>
+  <img
+    src={image.src}
+    alt={image.alt}
+    class:list={imageStyles}
+  />
 
-  <div class:list={["flex w-full flex-col"]}>
-    <p class:list={["text-base md:text-3xl", "!font-light","text-brand-black"]}>{name}</p>
+  <div class:list={['flex w-full flex-col']}>
+    <h3
+      class:list={[
+        'text-base md:text-3xl',
+        '!font-light',
+        'text-brand-black',
+        'mb-0',
+      ]}
+    >
+      {name}
+    </h3>
 
-    <div class:list={["flex w-full items-baseline gap-4"]}>
-      <p class:list={["text-sm text-gray-500"]}>{description}</p>
+    <div class:list={['flex w-full items-baseline gap-4']}>
+      <p class:list={['text-sm text-gray-500', 'mb-0']}>{description}</p>
 
       <div
         class:list={[
-          "flex-grow",
-          "border-b-3",
-          "border-dotted",
-          "border-gray-300",
+          'flex-grow',
+          'border-b-3',
+          'border-dotted',
+          'border-gray-300',
         ]}
       >
       </div>
 
       <span
-        class:list={["text-xl font-bold text-brand-black whitespace-nowrap"]}
+        class:list={['text-xl font-bold text-brand-black whitespace-nowrap']}
         >$ {price}</span
       >
     </div>
