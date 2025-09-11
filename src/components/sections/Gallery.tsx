@@ -8,35 +8,22 @@ import NavigationButton from '../ui/NavigationButton'
 
 // styles
 import 'swiper/css'
-import { FaRegArrowAltCircleRight } from 'react-icons/fa'
+// DARIDEV: import in wrong place
+// import { FaRegArrowAltCircleRight } from 'react-icons/fa'
 
 // Libs
 import { getGalleryImages } from '../../lib/api/gallery'
 import type { GalleryImageItem } from '../../lib/api/gallery'
 
 // DARIDEV: api calls always inside components or sections
-// no pages
+// no in pages
 const images: GalleryImageItem[] = await getGalleryImages()
 
 export default function Gallery() {
 
-  ;<button
-    className={clsx(
-      'gallery-next',
-      'absolute',
-      'right-4',
-      'top-1/2',
-      '-translate-y-1/2',
-      'z-10',
-      'text-brand-grey'
-    )}
-  >
-    <FaRegArrowAltCircleRight className='text-3xl' />
-  </button>
-
   return (
     <section className={clsx('bg-black', 'py-20')} id="gallery">
-      <div className={clsx('max-w-7xl', 'mx-auto', 'my-10')}>
+      <div className={clsx('max-w-7xl', 'mx-auto', 'my-10', 'container')}>
         <h2
           className={clsx(
             'text-4xl',
@@ -86,19 +73,18 @@ export default function Gallery() {
               slidesPerView: 4,
             },
             1024: {
-              slidesPerView: 6,
-            },
-            1280: {
-              slidesPerView: 6,
+              slidesPerView: 5,
             },
           }}
         >
           {images.map((item) => (
-            <SwiperSlide key={item.id}>
+            <SwiperSlide key={item.id} className={clsx('w-full')}>
               <img
                 src={item.src}
                 alt={item.alt || 'Gallery'}
                 loading='lazy'
+                // DARIDEV. image full width (error in big screens)
+                className={clsx('w-full', 'h-full', 'object-cover')}
               />
             </SwiperSlide>
           ))}
