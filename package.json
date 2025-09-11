@@ -11,6 +11,7 @@
   "dependencies": {
     "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.5.1",
+    "@fontsource-variable/ballet": "^5.2.6",
     "@fontsource-variable/dancing-script": "^5.2.6",
     "@fontsource-variable/montserrat": "^5.2.6",
     "@fontsource-variable/plus-jakarta-sans": "^5.2.6",
