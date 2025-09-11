@@ -70,6 +70,7 @@ const whatsappNumber = '+4494340035'
         <div class:list={['space-y-4']}>
           <SmallSubtitle
             iswhite={true}
+            ish2={true}
             class:list={['text-center', 'md:text-left']}
           >
             CONTACT
@@ -118,14 +119,26 @@ const whatsappNumber = '+4494340035'
           </div>
         </div>
 
-        <div class:list={['space-y-4']}>
-          <Subtitle iswhite={true}><br /><br /><br />Moonhouse</Subtitle>
+        <div class:list={['space-y-4', 'my-12 md:my-0', 'md:mt-18']}>
+          <!-- DARIDEV: use regular p' and no br for spacing-->
+          <!-- <p iswhite={true}><br /><br /><br />Moonhouse</p> -->
+          <p
+            class:list={[
+              'text-brand-white',
+              'text-2xl',
+              'font-bold',
+              'text-center',
+            ]}
+          >
+            Moonhouse
+          </p>
           <p class:list={['text-brand-white']}>Get news & offers events.</p>
         </div>
 
         <div class:list={['space-y-4']}>
           <SmallSubtitle
             iswhite={true}
+            ish2={true}
             class:list={['text-center', 'md:text-left']}
           >
             WORKING HOURS
@@ -155,15 +168,17 @@ const whatsappNumber = '+4494340035'
             </Link>
           ))
         }
-        <p>
-          © 2025 Moonhouse. All rights reserved. |
-          <Link
-            href={`https://wa.me/${whatsappNumber}`}
-            openInNewTab={true}
-          >
-            Developed by Dari Dev's Team
-          </Link>
-        </p>
+        <small>
+          <p>
+            © 2025 Moonhouse. All rights reserved. |
+            <Link
+              href={`https://wa.me/${whatsappNumber}`}
+              openInNewTab={true}
+            >
+              Developed by Dari Dev's Team
+            </Link>
+          </p>
+        </small>
       </div>
     </div>
   </div>
