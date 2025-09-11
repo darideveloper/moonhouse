@@ -67,125 +67,134 @@ const whatsappNumber = '+4494340035'
 
 <footer
   class:list={[
-    'bg-black text-white pt-45 px-4 relative overflow-hidden',
+    // DARIDEV: fixed styles syntax
+    'bg-black',
+    'text-white',
+    'pt-45',
+    'relative',
+    'overflow-hidden',
     'bg-brand-black',
   ]}
 >
-  <div class:list={['absolute inset-0 ', 'opacity-60']}>
-    <img
-      src='/images/moonscape-bg.png'
-      alt='Moon landscape background'
-      class:list={['w-full', 'h-full', 'object-cover']}
-    />
-  </div>
-
-  <div class:list={['max-w-7xl', 'mx-auto', 'relative', 'z-10']}>
-    <div
-      class:list={[
-        'grid',
-        'grid-cols-1',
-        'md:flex',
-        'md:justify-between',
-        'mb-12',
-        'text-center',
-        'md:text-left',
-      ]}
-    >
-      <div class:list={['space-y-4']}>
-        <SmallSubtitle
-          iswhite={true}
-          class:list={['text-center', 'md:text-left']}
-        >
-          CONTACT
-        </SmallSubtitle>
-
-        <div>
-          <p class:list={['text-white', 'mb-2']}>{contactData.address}</p>
-          <p class:list={['text-brand-orange', 'mb-2']}>
-            Call - <Link
-              href={`tel:${contactData.phone}`}
-              openInNewTab={false}
-              >{contactData.phone}</Link
-            >
-          </p>
-          <p class:list={['text-brand-orange']}>
-            <Link
-              href={`mailto:${contactData.email}`}
-              openInNewTab={false}
-              >{contactData.email}</Link
-            >
-          </p>
-        </div>
-        <div
-          class:list={[
-            'flex',
-            'gap-3',
-            'mt-4',
-            'justify-center md:justify-start',
-          ]}
-        >
-          {
-            socialLinks.map((social) => (
-              <IconLink
-                href={social.href}
-                openInNewTab={true}
-              >
-                {social.iconName === 'instagram' && <FaInstagram client:load />}
-                {social.iconName === 'facebook' && <FaFacebook client:load />}
-                {social.iconName === 'whatsapp' && <FaWhatsapp client:load />}
-                {social.iconName === 'tiktok' && <FaTiktok client:load />}
-              </IconLink>
-            ))
-          }
-        </div>
-      </div>
-
-      <div class:list={['space-y-4']}>
-        <Subtitle iswhite={true}><br /><br /><br />Moonhouse</Subtitle>
-        <p class:list={['text-brand-white']}>Get news & offers events.</p>
-      </div>
-
-      <div class:list={['space-y-4']}>
-        <SmallSubtitle
-          iswhite={true}
-          class:list={['text-center', 'md:text-left']}
-        >
-          WORKING HOURS
-        </SmallSubtitle>
-        <!-- DARIDEV: keep only schedule inside component (to reuse it) -->
-        <Schedule class:list={'gap-3'} />
-      </div>
+  <div class:list={['container']}>
+    <div class:list={['absolute', 'inset-0 ', 'opacity-60']}>
+      <img
+        src='/images/moonscape-bg.png'
+        alt='Moon landscape background'
+        class:list={['w-full', 'h-full', 'object-cover']}
+      />
     </div>
 
-    <div
-      class:list={[
-        'border-t',
-        'border-brand-white',
-        'pt-6',
-        'text-center',
-        'text-gray-400',
-        'text-sm',
-      ]}
-    >
-      {
-        links.map((link) => (
+    <div class:list={['max-w-7xl', 'mx-auto', 'relative', 'z-10']}>
+      <div
+        class:list={[
+          'grid',
+          'grid-cols-1',
+          'md:flex',
+          'md:justify-between',
+          'mb-12',
+          'text-center',
+          'md:text-left',
+        ]}
+      >
+        <div class:list={['space-y-4']}>
+          <SmallSubtitle
+            iswhite={true}
+            class:list={['text-center', 'md:text-left']}
+          >
+            CONTACT
+          </SmallSubtitle>
+
+          <div>
+            <p class:list={['text-white', 'mb-2']}>{contactData.address}</p>
+            <p class:list={['text-brand-orange', 'mb-2']}>
+              Call - <Link
+                href={`tel:${contactData.phone}`}
+                openInNewTab={false}
+                >{contactData.phone}</Link
+              >
+            </p>
+            <p class:list={['text-brand-orange']}>
+              <Link
+                href={`mailto:${contactData.email}`}
+                openInNewTab={false}
+                >{contactData.email}</Link
+              >
+            </p>
+          </div>
+          <div
+            class:list={[
+              'flex',
+              'gap-3',
+              'mt-4',
+              'justify-center md:justify-start',
+            ]}
+          >
+            {
+              socialLinks.map((social) => (
+                <IconLink
+                  href={social.href}
+                  openInNewTab={true}
+                >
+                  {social.iconName === 'instagram' && (
+                    <FaInstagram client:load />
+                  )}
+                  {social.iconName === 'facebook' && <FaFacebook client:load />}
+                  {social.iconName === 'whatsapp' && <FaWhatsapp client:load />}
+                  {social.iconName === 'tiktok' && <FaTiktok client:load />}
+                </IconLink>
+              ))
+            }
+          </div>
+        </div>
+
+        <div class:list={['space-y-4']}>
+          <Subtitle iswhite={true}><br /><br /><br />Moonhouse</Subtitle>
+          <p class:list={['text-brand-white']}>Get news & offers events.</p>
+        </div>
+
+        <div class:list={['space-y-4']}>
+          <SmallSubtitle
+            iswhite={true}
+            class:list={['text-center', 'md:text-left']}
+          >
+            WORKING HOURS
+          </SmallSubtitle>
+          <!-- DARIDEV: keep only schedule inside component (to reuse it) -->
+          <Schedule class:list={'gap-3'} />
+        </div>
+      </div>
+
+      <div
+        class:list={[
+          'border-t',
+          'border-brand-white',
+          'pt-6',
+          'text-center',
+          'text-gray-400',
+          'text-sm',
+        ]}
+      >
+        {
+          links.map((link) => (
+            <Link
+              href={link.href}
+              openInNewTab={true}
+            >
+              {link.text}
+            </Link>
+          ))
+        }
+        <p>
+          © 2025 Moonhouse. All rights reserved. |
           <Link
-            href={link.href}
+            href={`https://wa.me/${whatsappNumber}`}
             openInNewTab={true}
           >
-            {link.text}
+            Developed by Dari Dev's Team
           </Link>
-        ))
-      }
-      <p>
-        © 2025 Moonhouse. All rights reserved. |
-        <Link
-          href={`https://wa.me/${whatsappNumber}`}
-          openInNewTab={true}
-        >
-          Developed by Dari Dev's Team
-        </Link>
-      </p>
+        </p>
+      </div>
     </div>
   </div>
 </footer>
