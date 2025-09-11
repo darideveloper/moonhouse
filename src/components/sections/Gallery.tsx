@@ -9,11 +9,16 @@ import NavigationButton from '../ui/NavigationButton'
 // styles
 import 'swiper/css'
 import { FaRegArrowAltCircleRight } from 'react-icons/fa'
+
+// Libs
+import { getGalleryImages } from '../../lib/api/gallery'
 import type { GalleryImageItem } from '../../lib/api/gallery'
 
-type Props = { images: GalleryImageItem[] }
+// DARIDEV: api calls always inside components or sections
+// no pages
+const images: GalleryImageItem[] = await getGalleryImages()
 
-export default function Gallery({ images }: Props) {
+export default function Gallery() {
 
   ;<button
     className={clsx(
