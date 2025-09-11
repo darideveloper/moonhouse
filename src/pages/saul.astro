@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro'
 import Hero from '../components/sections/Hero.astro'
 import PageSEO from '../components/utils/PageSEO.astro'
-import AboutCards from '../components/sections/AboutCards.astro'
+import About from '../components/sections/About.astro'
 import Gallery from '../components/sections/Gallery'
 import Menu from '../components/sections/Menu.astro'
 ---
@@ -10,7 +10,7 @@ import Menu from '../components/sections/Menu.astro'
 <Layout>
   <PageSEO currentPage='Home' />
   <Hero />
-  <AboutCards />
+  <About />
   <Menu />
   <Gallery client:load />
 </Layout>
