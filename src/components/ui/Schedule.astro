@@ -18,25 +18,27 @@ interface Props {
   lineClass?: string
 }
 
-const {
-  class: className = '',
-} = Astro.props
+const { class: className = '' } = Astro.props
 
 // DARIDEV: call data inside component
 const openingHoursData = await getOpeningHours()
 const workingHours = groupOpeningHours(openingHoursData)
 ---
 
-<div class:list={['text-white', 'text-center', 'md:text-left', className]}>
+<div
+  class:list={[
+    'text-white',
+    'text-center',
+    'md:text-left',
+    'flex',
+    'flex-col',
+    className,
+  ]}
+>
   {
     workingHours.map((item) => (
       <div
-        class:list={[
-          'flex',
-          'justify-center md:justify-start',
-          'items-center',
-          'mb-2',
-        ]}
+        class:list={['flex', 'justify-center md:justify-start', 'items-center']}
       >
         <span class:list={['text-brand-orange', 'font-medium']}>
           {item.day}
