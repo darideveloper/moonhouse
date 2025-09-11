@@ -28,9 +28,9 @@ export default function NavigationButton({
         'top-1/2',
         '-translate-y-1/2',
         'z-10',
-        'text-brand-grey',
+        'text-brand-orange',
         '!opacity-100',
-        'mix-blend-luminosity', // DARIDEV: changed from overlay to luminosity for better visibility
+        'mix-blend-difference', // DARIDEV: changed for better visibility
         'cursor-pointer'
       )}
     >
