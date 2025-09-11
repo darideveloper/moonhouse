@@ -63,8 +63,7 @@ export default function Gallery() {
 
         <Swiper
           modules={[Navigation, Autoplay]}
-          onSlideChange={() => console.log('slide change')}
-          onSwiper={(swiper) => console.log(swiper)}
+          onSlideChange={() => console.debug('slide change')}
           navigation={{
             prevEl: '.gallery-prev',
             nextEl: '.gallery-next',

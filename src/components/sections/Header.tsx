@@ -9,7 +9,6 @@ export default function Header(): React.JSX.Element {
 
   const handleNav = () => {
     setIsNavOpen(!isNavOpen)
-    console.log(isNavOpen)
   }
 
   const navLinks = [

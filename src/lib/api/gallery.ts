@@ -11,20 +11,15 @@ export const getGalleryImages = async (): Promise<GalleryImageItem[]> => {
         'https://moonhouse.apps.darideveloper.com');
 
     const url = `${apiEndpoint}/items/GalleryImage`;
-    console.log('[gallery API] request URL:', url)
 
     try {
         const response = await fetch(url);
-        console.log('[gallery API] response status:', response.status)
-        console.log(response);
         if (!response.ok) {
             throw new Error(`API error: ${response.status} ${response.statusText}`);
         }
 
         const json = await response.json();
-        console.log('[gallery API] raw json:', json)
         const data = (json?.data ?? []) as any[];
-        console.log('[gallery API] items count:', data.length)
 
         const items: GalleryImageItem[] = data
             .filter((item) => item.status === "published")
