@@ -12,7 +12,7 @@ import { IoTimeOutline } from 'react-icons/io5'
 import { IoCalendarOutline } from 'react-icons/io5'
 
 // Libs
-import { infoCards } from '../../data/api/BaseAPI'
+import { getInfoCards } from '../../lib/api/infoCards'
 
 // Icon mapping
 const iconMap: Record<string, any> = {
@@ -33,7 +33,7 @@ interface CardData {
 }
 
 // JSON data to display on the page
-const cardData: CardData[] = await infoCards()
+const cardData: CardData[] = await getInfoCards()
 ---
 
 <section
