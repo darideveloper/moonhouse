@@ -1,4 +1,10 @@
 ---
+
+// Components
+import Subtitle from './Subtitle.astro'
+
+
+// Props
 interface Props {
   name?: string
   description?: string
@@ -27,7 +33,7 @@ const imageStyles = [
 ]
 ---
 
-<div class:list={['flex w-full items-center gap-4 py-4', className]}>
+<article class:list={['flex w-full items-center gap-4 py-4', className]}>
   <img
     src={image.src}
     alt={image.alt}
@@ -35,7 +41,7 @@ const imageStyles = [
   />
 
   <div class:list={['flex w-full flex-col']}>
-    <h3
+    <h4
       class:list={[
         'text-base md:text-3xl',
         '!font-light',
@@ -44,7 +50,7 @@ const imageStyles = [
       ]}
     >
       {name}
-    </h3>
+    </h4>
 
     <div class:list={['flex w-full items-baseline gap-4']}>
       <p class:list={['text-sm text-gray-500', 'mb-0']}>{description}</p>
@@ -65,4 +71,4 @@ const imageStyles = [
       >
     </div>
   </div>
-</div>
+</article>
