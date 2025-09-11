@@ -9,17 +9,11 @@ import NavigationButton from '../ui/NavigationButton'
 // styles
 import 'swiper/css'
 import { FaRegArrowAltCircleRight } from 'react-icons/fa'
+import type { GalleryImageItem } from '../../lib/api/gallery'
 
-export default function Gallery() {
-  const images = [
-    '/images/gallery/1.png',
-    '/images/gallery/2.png',
-    '/images/gallery/3.png',
-    '/images/gallery/4.png',
-    '/images/gallery/5.png',
-    '/images/gallery/6.png',
-    '/images/gallery/1.png',
-  ]
+type Props = { images: GalleryImageItem[] }
+
+export default function Gallery({ images }: Props) {
 
   ;<button
     className={clsx(
@@ -95,11 +89,11 @@ export default function Gallery() {
             },
           }}
         >
-          {images.map((image, index) => (
-            <SwiperSlide key={index}>
+          {images.map((item) => (
+            <SwiperSlide key={item.id}>
               <img
-                src={image}
-                alt='Gallery'
+                src={item.src}
+                alt={item.alt || 'Gallery'}
                 loading='lazy'
               />
             </SwiperSlide>

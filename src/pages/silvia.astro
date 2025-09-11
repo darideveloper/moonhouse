@@ -4,7 +4,9 @@ import Hero from '../components/sections/Hero.astro'
 import AboutCards from '../components/sections/AboutCards.astro'
 import Gallery from '../components/sections/Gallery'
 import PageSEO from '../components/utils/PageSEO.astro'
+import { getGalleryImages } from '../lib/api/gallery'
 
+const images = await getGalleryImages()
 
 ---
 
@@ -12,5 +14,5 @@ import PageSEO from '../components/utils/PageSEO.astro'
   <PageSEO currentPage='Silvia' />
   <Hero />
   <AboutCards />
-  <Gallery client:load />
+  <Gallery client:load images={images} />
 </Layout>

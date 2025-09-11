@@ -6,11 +6,10 @@ export interface InfoCard {
 }
 
 export const getInfoCards = async (): Promise<InfoCard[]> => {
-    const apiEndpoint = import.meta.env.VITE_API_BASE_URL;
-
-    if (!apiEndpoint) {
-        throw new Error("VITE_API_BASE_URL is not defined");
-    }
+    const apiEndpoint =
+        import.meta.env.VITE_API_BASE_URL ||
+        (console.warn('[infoCards API] VITE_API_BASE_URL missing, using default'),
+        'https://moonhouse.apps.darideveloper.com');
 
     const url = `${apiEndpoint}/items/InfoCard`;
 
