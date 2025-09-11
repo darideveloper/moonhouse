@@ -1,56 +1,64 @@
 ---
 // CardInfo component - Story section with timeline
+
+// Data
+const altText = 'Restaurant Interior (Moonhouse)'
 ---
 
-<!-- Story Section -->
-<div class:list={['lg:grid', 'lg:grid-cols-2', 'gap-16', 'items-center']}>
-  <!-- Image -->
-  <div class:list={['relative']}>
-    <div
-      class:list={[
-        'w-full',
-        'bg-gray-800',
-        'rounded-lg',
-        'shadow-2xl',
-        'overflow-hidden',
-      ]}
-      style='aspect-ratio: 4/3;'
-    >
-      <img
-        src='/images/table.png'
-        alt='Restaurant Interior'
-        class:list={['w-full', 'h-full', 'object-cover']}
-        loading='lazy'
-      />
+<!-- DARIDEV: add wrapper -->
+<div>
+  <!-- Story Section -->
+  <div class:list={['lg:grid', 'lg:grid-cols-2', 'gap-16', 'items-center']}>
+    <!-- Image -->
+    <div class:list={['relative']}>
+      <div
+        class:list={[
+          'w-full',
+          'bg-gray-800',
+          'rounded-lg',
+          'shadow-2xl',
+          'overflow-hidden',
+        ]}
+        style='aspect-ratio: 4/3;'
+      >
+        <img
+          src='/images/table.png'
+          alt={altText}
+          class:list={['w-full', 'h-full', 'object-cover']}
+          loading='lazy'
+          title={altText}
+        />
+      </div>
     </div>
-  </div>
-
-  <!-- Content -->
-  <div class:list={['text-white']}>
-    <h2 class:list={['text-4xl', 'font-bold', 'my-8 lg:my-0 lg:mb-8']}>
-      The Story
-    </h2>
-    <p class:list={['text-gray-300', 'text-lg', 'leading-relaxed', 'mb-12']}>
-      In the heart of Fayetteville, Arkansas, <span class:list={['font-bold']}>Moonhouse Coffee Bar and Bistro</span>
-      comes to life in a charming home with over half a century of history.
-      Carefully restored, it preserves its original spirit and the details that
-      quietly tell the story of the place.
-      <br />
-      <br />
-      Moonhouse is a tribute to authenticity and community. It's where locals and
-      the city's vibrant student life come together to connect, unwind, and enjoy
-      a space that feels both welcoming and alive.
-      <br />
-      <br />
-      Every corner reflects our love for stories, experiences, and moments worth
-      remembering. Here, good coffee shares the stage with a cold beer, a glass of
-      wine, or a cocktail to fit the night. Welcome to Moonhouse, where every story
-      is a reason to return.
-    </p>
-
-    <!-- Signature -->
-    <div class:list={['mt-12']}>
-      <div class:list={['text-4xl', 'text-white', 'font-script']}>Moonhouse</div>
+  
+    <!-- Content -->
+    <div class:list={['text-white']}>
+      <h2 class:list={['text-4xl', 'font-bold', 'my-8 lg:my-0 lg:mb-8']}>
+        The Story
+      </h2>
+      <p class:list={['text-gray-300', 'text-lg', 'leading-relaxed', 'mb-12']}>
+        In the heart of Fayetteville, Arkansas, <span class:list={['font-bold']}>Moonhouse Coffee Bar and Bistro</span>
+        comes to life in a charming home with over half a century of history.
+        Carefully restored, it preserves its original spirit and the details that
+        quietly tell the story of the place.
+        <br />
+        <br />
+        Moonhouse is a tribute to authenticity and community. It's where locals and
+        the city's vibrant student life come together to connect, unwind, and enjoy
+        a space that feels both welcoming and alive.
+        <br />
+        <br />
+        Every corner reflects our love for stories, experiences, and moments worth
+        remembering. Here, good coffee shares the stage with a cold beer, a glass of
+        wine, or a cocktail to fit the night. Welcome to Moonhouse, where every story
+        is a reason to return.
+      </p>
+  
+      <!-- Signature -->
+      <div class:list={['mt-12']}>
+        <div class:list={['text-4xl', 'text-white', 'font-script']}>Moonhouse</div>
+      </div>
     </div>
   </div>
 </div>
+

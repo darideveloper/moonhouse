@@ -6,7 +6,12 @@ interface LogoProps {
   isNavOpen: boolean;
 }
 
+// Data
+const altText = 'Moonhouse Logo'
+
 export default function Logo({ handleNav, isNavOpen }: LogoProps) {
+
+
   return (
     <div className={clsx(
       "absolute",
@@ -25,7 +30,8 @@ export default function Logo({ handleNav, isNavOpen }: LogoProps) {
         <a href="/">
           <img
             src="/images/logo.png"
-            alt="Logo"
+            alt={altText}
+            title={altText}
             // DARIDEV: fix size to align menu items ind esktop
             className={clsx(
               "w-16 lg:w-22",

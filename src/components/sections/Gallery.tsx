@@ -19,8 +19,11 @@ import type { GalleryImageItem } from '../../lib/api/gallery'
 // no in pages
 const images: GalleryImageItem[] = await getGalleryImages()
 
-export default function Gallery() {
+// Data
+const altText = 'Gallery image of Moonhouse'
 
+export default function Gallery() {
+  
   return (
     <section className={clsx('bg-black', 'py-20')} id="gallery">
       <div className={clsx('max-w-7xl', 'mx-auto', 'my-10', 'container')}>
@@ -81,7 +84,8 @@ export default function Gallery() {
             <SwiperSlide key={item.id} className={clsx('w-full')}>
               <img
                 src={item.src}
-                alt={item.alt || 'Gallery'}
+                alt={item.alt || altText}
+                title={item.alt || altText}
                 loading='lazy'
                 // DARIDEV. image full width (error in big screens)
                 className={clsx('w-full', 'h-full', 'object-cover')}
