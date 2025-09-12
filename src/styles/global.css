@@ -11,6 +11,11 @@
     --color-brand-grey-light: #d9d9d9;
 }
 
+html {
+    /* Smooth scroll */
+    scroll-behavior: smooth;
+}
+
 body {
     font-size: 16px; /* xl = 18px */
     line-height: 1.75;
