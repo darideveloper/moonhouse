@@ -12,21 +12,20 @@ import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 
 // Data
 import { navLinks } from '../../data/nav.ts'
+import {
+  socialNetworks,
+  address,
+  phone,
+  phoneUnformatted,
+  email,
+  daridevWhatsappLink,
+} from '../../data/contact.ts'
 
 const contactData = {
-  address: '5 Rue Dalou, 75015 Paris',
-  phone: '+33 156 78 89 56',
-  email: 'benoit@mail.com',
+  address: address,
+  phone: phone,
+  email: email,
 }
-
-const socialLinks = [
-  { iconName: 'instagram', href: 'https://instagram.com/example' },
-  { iconName: 'facebook', href: 'https://facebook.com/example' },
-  { iconName: 'whatsapp', href: 'https://wa.me/+1234567890' },
-  { iconName: 'tiktok', href: 'https://tiktok.com/@example' },
-]
-
-const whatsappNumber = '+4494340035'
 ---
 
 <section
@@ -74,7 +73,7 @@ const whatsappNumber = '+4494340035'
             <p class:list={['text-white', 'mb-2']}>{contactData.address}</p>
             <p class:list={['text-brand-orange', 'mb-2']}>
               Call - <Link
-                href={`tel:${contactData.phone}`}
+                href={`tel:${phoneUnformatted}`}
                 openInNewTab={false}
                 >{contactData.phone}</Link
               >
@@ -96,17 +95,15 @@ const whatsappNumber = '+4494340035'
             ]}
           >
             {
-              socialLinks.map((social) => (
+              socialNetworks.map((social) => (
                 <IconLink
-                  href={social.href}
+                  href={social.link}
                   openInNewTab={true}
                 >
-                  {social.iconName === 'instagram' && (
-                    <FaInstagram client:load />
-                  )}
-                  {social.iconName === 'facebook' && <FaFacebook client:load />}
-                  {social.iconName === 'whatsapp' && <FaWhatsapp client:load />}
-                  {social.iconName === 'tiktok' && <FaTiktok client:load />}
+                  {social.name === 'Instagram' && <FaInstagram client:load />}
+                  {social.name === 'Facebook' && <FaFacebook client:load />}
+                  {social.name === 'Whatsapp' && <FaWhatsapp client:load />}
+                  {social.name === 'Tiktok' && <FaTiktok client:load />}
                 </IconLink>
               ))
             }
@@ -167,7 +164,7 @@ const whatsappNumber = '+4494340035'
           <p>
             © 2025 Moonhouse. All rights reserved. |
             <Link
-              href={`https://wa.me/${whatsappNumber}`}
+              href={daridevWhatsappLink}
               openInNewTab={true}
             >
               Developed by Dari Dev's Team

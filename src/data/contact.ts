@@ -17,9 +17,13 @@ async function getAddress() {
 
 export const addressElems = await getAddress()
 
+export const address = addressElems.streetAddress + ' ' + addressElems.addressLocality + ', ' + addressElems.addressRegion + ', ' + addressElems.postalCode + ' ' + addressElems.addressCountry
+
 export const socialNetworks = [
   { name: 'Instagram', link: 'https://instagram.com/moonhouse' },
   { name: 'Facebook', link: 'https://facebook.com/moonhouse' },
 ]
 
 export const googleMapsLink = 'https://maps.google.com/?q=Fayetteville,AR'
+
+export const daridevWhatsappLink = 'https://api.whatsapp.com/send?phone=5214493402622'
