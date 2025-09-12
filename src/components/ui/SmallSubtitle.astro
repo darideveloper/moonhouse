@@ -1,32 +1,41 @@
 ---
 interface Props {
-  ish2?: boolean;
-  iswhite?: boolean;
-  class?: string;
+  ish2?: boolean
+  iswhite?: boolean
+  class?: string
 }
 
-const { ish2 = false, iswhite = false, class: className = "" } = Astro.props;
+const { ish2 = false, iswhite = false, class: className = '' } = Astro.props
 
 const baseStyles = [
-  "uppercase",
-  "!font-normal",
-  "tracking-wide",
-  iswhite ? "text-white" : "text-black",
-  "px-2"
-];
-const lineStyles = ["w-full", "h-px", "bg-brand-orange"];
+  'uppercase',
+  '!font-normal',
+  'tracking-wide',
+  iswhite ? 'text-white' : 'text-black',
+  'px-2',
+]
+const lineStyles = ['w-full', 'h-px', 'bg-brand-orange']
 ---
 
-<div class:list={["inline-block", "flex-col", "items-center md:items-start", className]}>
+<div
+  class:list={[
+    'inline-block',
+    'flex-col',
+    'items-center md:items-start',
+    className,
+  ]}
+  data-aos='fade-up'
+  data-aos-delay='1000'
+>
   <div class:list={lineStyles}></div>
 
   {
     ish2 ? (
-      <h2 class:list={[...baseStyles, "text-sm", "my-2"]}>
+      <h2 class:list={[...baseStyles, 'text-sm', 'my-2']}>
         <slot />
       </h2>
     ) : (
-      <h3 class:list={[...baseStyles, "text-xs", "my-1"]}>
+      <h3 class:list={[...baseStyles, 'text-xs', 'my-1']}>
         <slot />
       </h3>
     )
