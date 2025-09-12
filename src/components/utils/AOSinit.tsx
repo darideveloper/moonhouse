@@ -9,7 +9,7 @@ export default function AOSInit() {
     AOS.init({
       duration: 1000,
       delay: window.innerWidth < 768 ? 0 : 100,
-      once: true,
+      // once: true,
     })
   }, [])
 
