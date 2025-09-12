@@ -5,39 +5,15 @@ import MenuItems from '../sections/MenuItems.astro'
 
 // Libs
 import { getMenuCategories, getMenuItems } from "../../lib/api/menu";
-import { structureMenuData } from "../../lib/utils/formatmenu";
+import { structureMenuData, structureMenuItemData } from "../../lib/utils/formatmenu";
 
 // Get data from api
 const categoriesFromApi = await getMenuCategories();
 const allItemsFromApi = await getMenuItems();
 const formattedMenu = structureMenuData(categoriesFromApi, allItemsFromApi);
 
-const specialOffersData = {
-  smallsubtitle: 'Menu',
-  products: [
-    {
-      name: 'Try Our Special Offers',
-      price: 10,
-      description:
-        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making it look like readable English.",
-      image: {
-        src: '/images/durazno.webp',
-        alt: 'Pastel con duraznos',
-      },
-    },
-
-    {
-      name: 'Try Our Special Offers',
-      price: 10,
-      description:
-        "Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content making it look like readable English.",
-      image: {
-        src: '/images/durazno.webp',
-        alt: 'Pastel con duraznos',
-      },
-    },
-  ],
-}
+const todaySpecialItems = allItemsFromApi.filter((item) => item.is_today_special);
+const todaySpecialFormattedItems = todaySpecialItems.map((item) => structureMenuItemData(item));
 ---
 
 <div
@@ -55,8 +31,8 @@ const specialOffersData = {
 >
   <div class:list={['md:col-span-1']}>
     <SpecialOffers
-      smallsubtitle={specialOffersData.smallsubtitle}
-      products={specialOffersData.products}
+      smallsubtitle={'Menu'}
+      products={todaySpecialFormattedItems}
     />
   </div>
 
