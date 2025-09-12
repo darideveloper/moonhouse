@@ -1,14 +1,21 @@
+// Libs
+import { getInfoCards } from '../lib/api/infoCards'
+
 export const phone = '(479) 000-0000'
 export const phoneUnformatted = '+14790000000'
 export const email = 'info@moonhouse.example'
 
-export const addressElems = {
-  streetAddress: '123 ',
-  addressLocality: 'Fayetteville',
-  addressRegion: 'AR',
-  postalCode: '72701',
-  addressCountry: 'United States',
+// Get and format address from api info cards
+async function getAddress() {
+  const infoCards = await getInfoCards()
+  const addressJson = infoCards.find((card) =>
+    card.description.includes('streetAddress')
+  )
+  const address = JSON.parse(addressJson?.description || '{}')
+  return address
 }
+
+export const addressElems = await getAddress()
 
 export const socialNetworks = [
   { name: 'Instagram', link: 'https://instagram.com/moonhouse' },
@@ -16,5 +23,3 @@ export const socialNetworks = [
 ]
 
 export const googleMapsLink = 'https://maps.google.com/?q=Fayetteville,AR'
-
-
