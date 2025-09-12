@@ -52,23 +52,28 @@ const cardData: CardData[] = await getInfoCards()
       ]}
     >
       {
-        cardData.map((card) => (
-          <AboutCard
-            icon={iconMap[card.iconName]}
-            title={card.title}
-            link={card.link}
+        cardData.map((card, index) => (
+          <div
+            data-aos='zoom-in-down'
+            data-aos-delay={100 * (index + 1)}
           >
-            {
-              // Synamic render schedules or text
-              card.description === '{{schedule}}' ? (
-                <Schedule />
-              ) : (
-                <p class:list={['text-gray-300', 'leading-relaxed', 'mb-2']}>
-                  {card.description}
-                </p>
-              )
-            }
-          </AboutCard>
+            <AboutCard
+              icon={iconMap[card.iconName]}
+              title={card.title}
+              link={card.link}
+            >
+              {
+                // Synamic render schedules or text
+                card.description === '{{schedule}}' ? (
+                  <Schedule />
+                ) : (
+                  <p class:list={['text-gray-300', 'leading-relaxed', 'mb-2']}>
+                    {card.description}
+                  </p>
+                )
+              }
+            </AboutCard>
+          </div>
         ))
       }
     </div>

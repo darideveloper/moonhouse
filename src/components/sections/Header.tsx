@@ -84,6 +84,8 @@ export default function Header(): React.JSX.Element {
                   key={index}
                   href={link.href}
                   children={link.label}
+                  data-aos='fade-up'
+                  data-aos-delay={100 * (index + 1)}
                 />
               ))}
             </ul>

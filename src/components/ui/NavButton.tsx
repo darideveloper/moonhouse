@@ -7,12 +7,13 @@ import clsx from "clsx";
 interface NavButtonProps {
   href: string;
   children: React.ReactNode;
+  [key: string]: any;
 }
 
 // NavButton component
-export default function NavButton({ href, children }: NavButtonProps) {
+export default function NavButton({ href, children, ...props }: NavButtonProps) {
   return (
-    <li>
+    <li {...props}>
       <a 
         href={href} 
         // Update styles to make it looks more readable

@@ -24,13 +24,7 @@ const {
   class: className = '',
 } = Astro.props
 
-const sectionStyles = [
-  'max-w-md',
-  'mx-auto',
-  'bg-white',
-  'pt-0',
-  className,
-]
+const sectionStyles = ['max-w-md', 'mx-auto', 'bg-white', 'pt-0', className]
 ---
 
 <section class:list={sectionStyles}>
@@ -43,11 +37,13 @@ const sectionStyles = [
 
   {
     products.map((product) => (
-      <SpecialOffer
-        name={product.name}
-        description={product.description}
-        image={product.image}
-      />
+      <div data-aos='zoom-in-up'>
+        <SpecialOffer
+          name={product.name}
+          description={product.description}
+          image={product.image}
+        />
+      </div>
     ))
   }
 </section>

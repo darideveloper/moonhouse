@@ -34,13 +34,18 @@ const customSubtitleStyles = ['!text-4xl', 'mb-4']
     className,
   ]}
 >
-  <Subtitle
-    ish2={false}
-    iswhite={false}
-    class:list={customSubtitleStyles}
+  <div
+    data-aos='zoom-in-down'
+    data-aos-delay='100'
   >
-    {title}
-  </Subtitle>
+    <Subtitle
+      ish2={false}
+      iswhite={false}
+      class:list={customSubtitleStyles}
+    >
+      {title}
+    </Subtitle>
+  </div>
 
   <div class:list={['flex', 'flex-col']}>
     {
