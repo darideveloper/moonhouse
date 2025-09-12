@@ -5,6 +5,7 @@ import { Navigation, Autoplay } from 'swiper/modules'
 
 // components
 import NavigationButton from '../ui/NavigationButton'
+import Subtitle from '../ui/Subtitle'
 
 // styles
 import 'swiper/css'
@@ -23,22 +24,19 @@ const images: GalleryImageItem[] = await getGalleryImages()
 const altText = 'Gallery image of Moonhouse'
 
 export default function Gallery() {
-  
   return (
-    <section className={clsx('bg-black', 'py-20')} id="gallery">
+    <section
+      className={clsx('bg-black', 'py-20')}
+      id='gallery'
+    >
       <div className={clsx('max-w-7xl', 'mx-auto', 'my-10', 'container')}>
-        <h2
-          className={clsx(
-            'text-4xl',
-            'font-bold',
-            'mb-10',
-            'font-title',
-            'text-white',
-            'px-6'
-          )}
+        <Subtitle
+          ish2={true}
+          iswhite={true}
+          className={'mb-8 text-4xl'}
         >
           Gallery
-        </h2>
+        </Subtitle>
       </div>
       <div className={clsx('relative')}>
         {/* Custom Navigation Buttons */}
@@ -81,7 +79,10 @@ export default function Gallery() {
           }}
         >
           {images.map((item) => (
-            <SwiperSlide key={item.id} className={clsx('w-full')}>
+            <SwiperSlide
+              key={item.id}
+              className={clsx('w-full')}
+            >
               <img
                 src={item.src}
                 alt={item.alt || altText}

@@ -3,6 +3,9 @@
 
 // Data
 const altText = 'Restaurant Interior (Moonhouse)'
+
+// Components
+import Subtitle from './Subtitle.tsx'
 ---
 
 <!-- DARIDEV: add wrapper -->
@@ -33,9 +36,13 @@ const altText = 'Restaurant Interior (Moonhouse)'
   
     <!-- Content -->
     <div class:list={['text-white']}>
-      <h2 class:list={['text-4xl', 'font-bold', 'my-8 lg:my-0 lg:mb-8']}>
+      <Subtitle
+        ish2={true}
+        iswhite={true}
+        className={'mb-8'}
+      >
         The Story
-      </h2>
+      </Subtitle>
       <p class:list={['text-gray-300', 'text-lg', 'leading-relaxed', 'mb-12']}>
         In the heart of Fayetteville, Arkansas, <span class:list={['font-bold']}>Moonhouse Coffee Bar and Bistro</span>
         comes to life in a charming home with over half a century of history.
