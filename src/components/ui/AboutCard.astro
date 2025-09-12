@@ -1,15 +1,30 @@
 ---
 // Components
 import Subtitle from './Subtitle.tsx'
+import Schedule from './Schedule.astro'
 
 // Props
 export interface Props {
   icon: any
   title: string
   link?: string
+  content: string
 }
 
-const { icon: IconComponent, title, link } = Astro.props
+const { icon: IconComponent, title, link, content } = Astro.props
+
+// Simple function to get content type
+function getContentType(content: string) {
+  if (content === '{{schedule}}') return 'schedule'
+  if (content.includes('streetAddress')) return 'address'
+  return 'text'
+}
+
+function getAddress(addressJson: string): string {
+  const address = JSON.parse(addressJson)
+  const formattedAddress = `${address.streetAddress} ${address.addressLocality}, ${address.addressRegion}, ${address.postalCode} ${address.addressCountry}`
+  return formattedAddress
+}
 ---
 
 <article
@@ -70,7 +85,10 @@ const { icon: IconComponent, title, link } = Astro.props
       >
         {title}
       </Subtitle>
-      <slot />
+
+      {getContentType(content) === 'schedule' && <Schedule />}
+      {getContentType(content) === 'address' && <p>{getAddress(content)}</p>}
+      {getContentType(content) === 'text' && <p>{content}</p>}
     </div>
   </a>
 </article>
