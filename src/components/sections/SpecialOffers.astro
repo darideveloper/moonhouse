@@ -1,5 +1,4 @@
 ---
-import SmallSubtitle from '../ui/SmallSubtitle.astro'
 import SpecialOffer from '../ui/SpecialOffer.astro'
 
 interface Product {
@@ -13,27 +12,18 @@ interface Product {
 }
 
 interface Props {
-  smallsubtitle?: string
   products?: Product[]
   class?: string
 }
 
-const {
-  smallsubtitle = 'Menu',
-  products = [],
-  class: className = '',
-} = Astro.props
+const { products = [], class: className = '' } = Astro.props
 
-const sectionStyles = ['max-w-md', 'mx-auto', 'bg-white', 'pt-0', className]
+// DARIDEV: section styles removed
+// const sectionStyles = ['max-w-md', 'mx-auto', 'bg-white', 'pt-0', className]
 ---
 
-<section class:list={sectionStyles}>
-  <SmallSubtitle
-    ish2={true}
-    iswhite={false}
-  >
-    {smallsubtitle}
-  </SmallSubtitle>
+<section class:list={['max-w-md', 'mx-auto', 'bg-white', 'pt-0', className]}>
+  <!-- DARIDEV: title demoved and placed in main component -->
 
   {
     products.map((product) => (

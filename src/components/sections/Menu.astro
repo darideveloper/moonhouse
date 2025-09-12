@@ -2,18 +2,26 @@
 // Components
 import SpecialOffers from '../sections/SpecialOffers.astro'
 import MenuItems from '../sections/MenuItems.astro'
+import SmallSubtitle from '../ui/SmallSubtitle.astro'
 
 // Libs
-import { getMenuCategories, getMenuItems } from "../../lib/api/menu";
-import { structureMenuData, structureMenuItemData } from "../../lib/utils/formatmenu";
+import { getMenuCategories, getMenuItems } from '../../lib/api/menu'
+import {
+  structureMenuData,
+  structureMenuItemData,
+} from '../../lib/utils/formatmenu'
 
 // Get data from api
-const categoriesFromApi = await getMenuCategories();
-const allItemsFromApi = await getMenuItems();
-const formattedMenu = structureMenuData(categoriesFromApi, allItemsFromApi);
+const categoriesFromApi = await getMenuCategories()
+const allItemsFromApi = await getMenuItems()
+const formattedMenu = structureMenuData(categoriesFromApi, allItemsFromApi)
 
-const todaySpecialItems = allItemsFromApi.filter((item) => item.is_today_special);
-const todaySpecialFormattedItems = todaySpecialItems.map((item) => structureMenuItemData(item));
+const todaySpecialItems = allItemsFromApi.filter(
+  (item) => item.is_today_special
+)
+const todaySpecialFormattedItems = todaySpecialItems.map((item) =>
+  structureMenuItemData(item)
+)
 ---
 
 <div
@@ -27,19 +35,28 @@ const todaySpecialFormattedItems = todaySpecialItems.map((item) => structureMenu
     'justify-center md:justify-start',
     'items-center md:items-start',
   ]}
-  id="menu"
+  id='menu'
 >
-  <div class:list={['md:col-span-1']}>
-    <SpecialOffers
-      smallsubtitle={'Menu'}
-      products={todaySpecialFormattedItems}
-    />
+  <div>
+    <SmallSubtitle
+      ish2={true}
+      iswhite={false}
+    >
+      Menu
+    </SmallSubtitle>
+
+    <div class:list={['md:col-span-1']}>
+      <SpecialOffers products={todaySpecialFormattedItems} />
+    </div>
   </div>
 
-  <div class:list={["flex", "flex-col", "gap-12", "md:col-span-2", "pt-14"]}>
+  <div class:list={['flex', 'flex-col', 'gap-12', 'md:col-span-2', 'pt-14']}>
     {
       formattedMenu.map((menuSection) => (
-        <MenuItems title={menuSection.title} items={menuSection.items} />
+        <MenuItems
+          title={menuSection.title}
+          items={menuSection.items}
+        />
       ))
     }
   </div>
