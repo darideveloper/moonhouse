@@ -1,6 +1,16 @@
 ---
+// Components
 import SpecialOffers from '../sections/SpecialOffers.astro'
 import MenuItems from '../sections/MenuItems.astro'
+
+// Libs
+import { getMenuCategories, getMenuItems } from "../../lib/api/menu";
+import { structureMenuData } from "../../lib/utils/formatmenu";
+
+// Get data from api
+const categoriesFromApi = await getMenuCategories();
+const allItemsFromApi = await getMenuItems();
+const formattedMenu = structureMenuData(categoriesFromApi, allItemsFromApi);
 
 const specialOffersData = {
   smallsubtitle: 'Menu',
@@ -28,78 +38,6 @@ const specialOffersData = {
     },
   ],
 }
-
-const startersData = {
-  title: 'Starters',
-  items: [
-    {
-      name: 'Raw Scallops from Erquy',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 40,
-      image: { src: '/images/durazno.webp', alt: 'Raw Scallops' },
-    },
-    {
-      name: 'Spring Roll',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 20,
-      image: { src: '/images/durazno.webp', alt: 'Spring Roll' },
-    },
-    {
-      name: 'French Onion Soup',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 25,
-      image: { src: '/images/durazno.webp', alt: 'French Onion Soup' },
-    },
-  ],
-}
-
-const mainDishData = {
-  title: 'Main Dish',
-  items: [
-    {
-      name: 'Grilled Salmon with Dil Sauce',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 40,
-      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
-    },
-    {
-      name: 'Grilled Salmon with Dil Sauce',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 40,
-      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
-    },
-    {
-      name: 'Grilled Salmon with Dil Sauce',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 40,
-      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
-    },
-    {
-      name: 'Grilled Salmon with Dil Sauce',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 40,
-      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
-    },
-    {
-      name: 'Grilled Salmon with Dil Sauce',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 40,
-      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
-    },
-    {
-      name: 'Grilled Salmon with Dil Sauce',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 40,
-      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
-    },
-    {
-      name: 'Grilled Salmon with Dil Sauce',
-      description: 'Candied Jerusalem artichokes, truffle',
-      price: 40,
-      image: { src: '/images/durazno.webp', alt: 'Grilled Salmon' },
-    },
-  ],
-}
 ---
 
 <div
@@ -115,7 +53,6 @@ const mainDishData = {
   ]}
   id="menu"
 >
-  {}
   <div class:list={['md:col-span-1']}>
     <SpecialOffers
       smallsubtitle={specialOffersData.smallsubtitle}
@@ -123,16 +60,11 @@ const mainDishData = {
     />
   </div>
 
-  {}
-  <div class:list={['flex', 'flex-col', 'gap-12', 'md:col-span-2', 'pt-14']}>
-    {}
-    <MenuItems
-      title={startersData.title}
-      items={startersData.items}
-    />
-    <MenuItems
-      title={mainDishData.title}
-      items={mainDishData.items}
-    />
+  <div class:list={["flex", "flex-col", "gap-12", "md:col-span-2", "pt-14"]}>
+    {
+      formattedMenu.map((menuSection) => (
+        <MenuItems title={menuSection.title} items={menuSection.items} />
+      ))
+    }
   </div>
 </div>
