@@ -1,5 +1,11 @@
+// Libs
 import React from 'react'
 import { useState } from 'react'
+
+// Data
+import { navLinks } from '../../data/nav.ts'
+
+// Components
 import NavButton from '../ui/NavButton'
 import Logo from '../ui/Logo'
 import clsx from 'clsx'
@@ -11,12 +17,13 @@ export default function Header(): React.JSX.Element {
     setIsNavOpen(!isNavOpen)
   }
 
-  const navLinks = [
-    { href: '/', label: 'HOME' },
-    { href: '#about', label: 'ABOUT' },
-    { href: '#menu', label: 'MENU' },
-    { href: '#gallery', label: 'GALLERY' },
-  ]
+  // DARIDEV: menu from global data
+  // const navLinks = [
+  //   { href: '/', label: 'HOME' },
+  //   { href: '#about', label: 'ABOUT' },
+  //   { href: '#menu', label: 'MENU' },
+  //   { href: '#gallery', label: 'GALLERY' },
+  // ]
 
   return (
     // DARIDEV: nor using header tag

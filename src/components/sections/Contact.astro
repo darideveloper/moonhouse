@@ -11,18 +11,13 @@ import Schedule from '../ui/Schedule.astro'
 import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from 'react-icons/fa'
 
 // Data
+import { navLinks } from '../../data/nav.ts'
+
 const contactData = {
   address: '5 Rue Dalou, 75015 Paris',
   phone: '+33 156 78 89 56',
   email: 'benoit@mail.com',
 }
-
-const links = [
-  { text: 'Privacy Policy', href: '/privacy' },
-  { text: 'Terms of Service', href: '/terms' },
-  { text: 'About Us', href: '/about' },
-  { text: 'Contact', href: '/contact' },
-]
 
 const socialLinks = [
   { iconName: 'instagram', href: 'https://instagram.com/example' },
@@ -158,12 +153,13 @@ const whatsappNumber = '+4494340035'
         ]}
       >
         {
-          links.map((link) => (
+          navLinks.map((link) => (
             <Link
               href={link.href}
               openInNewTab={true}
+              class:list={['px-2']}
             >
-              {link.text}
+              {link.label}
             </Link>
           ))
         }
