@@ -1,9 +1,9 @@
 // Libs
 import { getInfoCards } from '../lib/api/infoCards'
 
-export const phone = '(479) 000-0000'
-export const phoneUnformatted = '+14790000000'
-export const email = 'info@moonhouse.example'
+export const phone = '4793324218'
+export const phoneUnformatted = '+14793324218'
+export const email = 'info@moonhouse.com'
 
 // Get and format address from api info cards
 async function getAddress() {
@@ -20,8 +20,8 @@ export const addressElems = await getAddress()
 export const address = addressElems.streetAddress + ' ' + addressElems.addressLocality + ', ' + addressElems.addressRegion + ', ' + addressElems.postalCode + ' ' + addressElems.addressCountry
 
 export const socialNetworks = [
-  { name: 'Instagram', link: 'https://instagram.com/moonhouse' },
-  { name: 'Facebook', link: 'https://facebook.com/moonhouse' },
+  { name: 'Instagram', link: 'https://www.instagram.com/moonhouse_ar' },
+  { name: 'Facebook', link: 'https://www.facebook.com/people/Moonhouse/100091244078433' },
 ]
 
 export const googleMapsLink = 'https://maps.google.com/?q=Fayetteville,AR'
