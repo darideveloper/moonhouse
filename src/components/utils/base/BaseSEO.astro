@@ -1,151 +1,94 @@
 ---
 interface Props {
-  currentPage: string // Current page
-  jsonType: string // Type of the page
-  extraJson?: Record<string, any> // Extra JSON data
-  baseDescription?: string // Description of the page (optional, to ignore i18n)
-  baseKeywords?: string // Keywords of the page (optional, to ignore i18n)
-  author?: string // Author of the page (optional, to ignore i18n)
-  useTagLine?: boolean // Use tag line from i18n
+  currentPage: string; // Current page
+  jsonType: string; // Type of the page
+  extraJson?: Record<string, any>; // Extra JSON data
+  baseDescription?: string; // Description of the page (optional, to ignore i18n)
+  baseKeywords?: string; // Keywords of the page (optional, to ignore i18n)
+  author?: string; // Author of the page (optional, to ignore i18n)
+  useTagLine?: boolean; // Use tag line from i18n
 }
 const {
-  currentPage,
   jsonType,
   extraJson = {},
-  baseDescription = '',
-  baseKeywords = '',
+  baseDescription = "",
+  baseKeywords = "",
   author = "Dari Dev's Team",
-  useTagLine = true,
-} = Astro.props as Props
+} = Astro.props as Props;
 
 // Data
-import { domain } from '../../../data/setup'
-import { email, socialNetworks, googleMapsLink } from '../../../data/contact'
+import { email, socialNetworks, googleMapsLink } from "../../../data/contact";
+
+const domain = import.meta.env.SITE || "https://moonhouse.vercel.app";
 
 // Get page metadata (no i18n)
-const title = 'Moonhouse Restaurant'
-const description = baseDescription
-const image = '/images/logo.png'
-const twitterHandle = '@DeveloperDari'
-let keywords = baseKeywords
+const title = "Moonhouse Restaurant";
+const description = baseDescription;
+const image = `${domain}/images/social-cover.webp`;
+
+const twitterHandle = "@DeveloperDari";
+let keywords = baseKeywords;
 
 // Split keywords into an array if it's a string
-const keywordsContent = Array.isArray(keywords) ? keywords.join(', ') : keywords
-
-
-
+const keywordsContent = Array.isArray(keywords)
+  ? keywords.join(", ")
+  : keywords;
 
 // Generate data
 const jsonLd = {
-  '@context': 'https://schema.org',
-  '@type': jsonType || 'LocalBusiness',
-  '@id': `#localbusiness`,
+  "@context": "https://schema.org",
+  "@type": jsonType || "LocalBusiness",
+  "@id": `#localbusiness`,
   name: title,
   description: description,
   url: domain,
-  logo: `/images/logo.png`,
-  image: `/images/logo.png`,
+  logo: `${domain}/images/logo.png`,
+  image: `${domain}/images/social-cover.webp`,
   email: email,
-  serviceArea: ['Fayetteville', 'United States'],
+  serviceArea: ["Fayetteville", "United States"],
   hasMap: googleMapsLink,
   sameAs: [...socialNetworks.map((social) => social.link)],
   areaServed: [
-    { '@type': 'AdministrativeArea', name: 'Fayetteville' },
-    { '@type': 'Country', name: 'United States' },
+    { "@type": "AdministrativeArea", name: "Fayetteville" },
+    { "@type": "Country", name: "United States" },
   ],
-  inLanguage: 'en',
+  inLanguage: "en",
   ...extraJson,
-}
+};
 
 const ogTypeMap = {
-  LocalBusiness: 'website',
-  Blog: 'blog',
-  BlogPosting: 'article',
-}
-const ogType = ogTypeMap[jsonType as keyof typeof ogTypeMap] || 'website'
+  LocalBusiness: "website",
+  Blog: "blog",
+  BlogPosting: "article",
+};
+const ogType = ogTypeMap[jsonType as keyof typeof ogTypeMap] || "website";
 ---
 
 <!-- Html tags -->
 <title>{title}</title>
-<meta
-  name='description'
-  content={description}
-/>
-{
-  keywordsContent && (
-    <meta
-      name='keywords'
-      content={keywordsContent}
-    />
-  )
-}
-<meta
-  name='author'
-  content={author}
-/>
+<meta name="description" content={description} />
+{keywordsContent && <meta name="keywords" content={keywordsContent} />}
+<meta name="author" content={author} />
 
 <!-- Open Graph tags -->
-<meta
-  property='og:type'
-  content={ogType}
-/>
-<meta
-  property='og:title'
-  content={title}
-/>
-<meta
-  property='og:description'
-  content={description}
-/>
-<meta
-  property='og:url'
-  content={domain}
-/>
-<meta
-  property='og:image'
-  content={image}
-/>
+<meta property="og:type" content={ogType} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={domain} />
+<meta property="og:image" content={image} />
 <!-- this auto generate with platform like facebook, instagram, twitter, etc. -->
-<meta
-  property='og:site_name'
-  content={title}
-/>
+<meta property="og:site_name" content={title} />
 
 <!-- Twitter tags -->
-<meta
-  name='twitter:card'
-  content='summary_large_image'
-/>
-<meta
-  name='twitter:site'
-  content={twitterHandle}
-/>
-<meta
-  name='twitter:title'
-  content={title}
-/>
-<meta
-  name='twitter:description'
-  content={description}
-/>
-<meta
-  name='twitter:image'
-  content={image}
-/>
-<meta
-  name='twitter:creator'
-  content='@DeveloperDari'
-/>
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content={twitterHandle} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={image} />
+<meta name="twitter:creator" content="@DeveloperDari" />
 
 <!-- Json Ld -->
-<script
-  type='application/ld+json'
-  set:html={JSON.stringify(jsonLd)}
-/>
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
 <!-- Sitemap -->
-<link
-  rel='sitemap'
-  href='/sitemap-0.xml'
-/>
-
+<link rel="sitemap" href="/sitemap-0.xml" />
