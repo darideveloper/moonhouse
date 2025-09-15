@@ -1,13 +1,12 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig } from 'astro/config'
 
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/vite'
+import react from '@astrojs/react'
+import sitemap from '@astrojs/sitemap'
+import showTailwindcssBreakpoint from 'astro-show-tailwindcss-breakpoint'
+import node from '@astrojs/node'
 
-import react from '@astrojs/react';
-
-import sitemap from '@astrojs/sitemap';
-
-import showTailwindcssBreakpoint from 'astro-show-tailwindcss-breakpoint';
 
 // https://astro.build/config
 export default defineConfig({
@@ -19,5 +18,9 @@ export default defineConfig({
     react(),
     sitemap(),
     showTailwindcssBreakpoint()
-  ]
-});
+  ],
+
+  // Server side rendering
+  output: 'server',
+  adapter: node({ mode: 'standalone' }),
+})
