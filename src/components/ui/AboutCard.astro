@@ -82,13 +82,19 @@ function getAddress(addressJson: string): string {
       <Subtitle
         ish2={true}
         iswhite={true}
+        className='text-center md:text-left'
       >
         {title}
       </Subtitle>
 
-      {getContentType(content) === 'schedule' && <Schedule />}
-      {getContentType(content) === 'address' && <p>{getAddress(content)}</p>}
-      {getContentType(content) === 'text' && <p>{content}</p>}
+      <p
+        class:list={["text-center md:text-left"]}
+      >
+        {getContentType(content) === 'schedule' && <Schedule />}
+        {getContentType(content) === 'address' && getAddress(content)}
+        {getContentType(content) === 'text' && content}
+      </p>
+
     </div>
   </a>
 </article>
