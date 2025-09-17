@@ -3,7 +3,7 @@ import { getInfoCards } from '../lib/api/infoCards'
 
 export const phone = '4793324218'
 export const phoneUnformatted = '+14793324218'
-export const email = 'info@moonhouse.com'
+export const email = 'moonhouse.ar@gmail.com'
 
 // Get and format address from api info cards
 async function getAddress() {
