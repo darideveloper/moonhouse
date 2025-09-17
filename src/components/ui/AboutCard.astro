@@ -13,10 +13,14 @@ export interface Props {
 
 const { icon: IconComponent, title, link, content } = Astro.props
 
+// Data
+import { email } from '../../data/contact'
+
 // Simple function to get content type
 function getContentType(content: string) {
   if (content === '{{schedule}}') return 'schedule'
   if (content.includes('streetAddress')) return 'address'
+  if (content === '{{email}}') return 'email'
   return 'text'
 }
 
@@ -92,6 +96,7 @@ function getAddress(addressJson: string): string {
       >
         {getContentType(content) === 'schedule' && <Schedule />}
         {getContentType(content) === 'address' && getAddress(content)}
+        {getContentType(content) === 'email' && <a href={`mailto:${email}`}>{email}</a>}
         {getContentType(content) === 'text' && content}
       </p>
 
