@@ -2,6 +2,7 @@
 import clsx from 'clsx'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Navigation, Autoplay } from 'swiper/modules'
+import { useState, useEffect } from 'react'
 
 // components
 import NavigationButton from '../ui/NavigationButton'
@@ -9,8 +10,6 @@ import Subtitle from '../ui/Subtitle'
 
 // styles
 import 'swiper/css'
-// DARIDEV: import in wrong place
-// import { FaRegArrowAltCircleRight } from 'react-icons/fa'
 
 // Libs
 import { getGalleryImages } from '../../lib/api/gallery'
@@ -24,6 +23,37 @@ const images: GalleryImageItem[] = await getGalleryImages()
 const altText = 'Gallery image of Moonhouse'
 
 export default function Gallery() {
+  const [showNavigation, setShowNavigation] = useState(true)
+  const [currentBreakpoint, setCurrentBreakpoint] = useState(5) // default to desktop
+
+  useEffect(() => {
+    const updateBreakpoint = () => {
+      const width = window.innerWidth
+      let slidesPerView = 5 // default
+
+      if (width < 480) {
+        slidesPerView = 2
+      } else if (width < 768) {
+        slidesPerView = 3
+      } else if (width < 1024) {
+        slidesPerView = 4
+      }
+
+      setCurrentBreakpoint(slidesPerView)
+      // Hide navigation if we have fewer or equal slides than what's visible
+      setShowNavigation(images.length > slidesPerView)
+    }
+
+    // Initial check
+    updateBreakpoint()
+
+    // Add resize listener
+    window.addEventListener('resize', updateBreakpoint)
+
+    // Cleanup
+    return () => window.removeEventListener('resize', updateBreakpoint)
+  }, [])
+
   return (
     <section
       className={clsx('bg-black', 'py-20')}
@@ -39,28 +69,32 @@ export default function Gallery() {
         </Subtitle>
       </div>
       <div className={clsx('relative')}>
-        {/* Custom Navigation Buttons */}
-        <NavigationButton
-          direction='prev'
-          className='gallery-prev'
-        />
-        <NavigationButton
-          direction='next'
-          className='gallery-next'
-        />
+        {/* Custom Navigation Buttons - Only show if needed */}
+        {showNavigation && (
+          <>
+            <NavigationButton
+              direction='prev'
+              className='gallery-prev'
+            />
+            <NavigationButton
+              direction='next'
+              className='gallery-next'
+            />
+          </>
+        )}
 
         <Swiper
           modules={[Navigation, Autoplay]}
           onSlideChange={() => console.debug('slide change')}
-          navigation={{
+          navigation={showNavigation ? {
             prevEl: '.gallery-prev',
             nextEl: '.gallery-next',
-          }}
-          loop={true}
-          autoplay={{
+          } : false}
+          loop={showNavigation} // Only loop if navigation is needed
+          autoplay={showNavigation ? {
             delay: 3000,
             disableOnInteraction: false,
-          }}
+          } : false} // Only autoplay if there are enough slides
           breakpoints={{
             0: {
               slidesPerView: 2,
