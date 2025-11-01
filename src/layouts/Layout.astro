@@ -6,9 +6,14 @@ import '@fontsource-variable/ballet'
 
 // Global styles
 import '../styles/global.css'
+
+// Components
 import Header from '../components/sections/Header'
 import Footer from '../components/sections/Footer.astro'
 import AOSInit from '../components/utils/AOSinit'
+
+// Utils
+import Posthog from '../components/utils/posthog.astro'
 ---
 
 <!doctype html>
@@ -54,6 +59,8 @@ import AOSInit from '../components/utils/AOSinit'
 
 		gtag('config', 'G-KD3KNVH65H');
 	</script>
+
+	<Posthog />
   </head>
   <body>
     <!-- Start aos -->
