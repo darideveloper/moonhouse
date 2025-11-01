@@ -1,33 +1,57 @@
 ---
 // Fornts
-import "@fontsource-variable/plus-jakarta-sans";
-import "@fontsource-variable/montserrat";
-import "@fontsource-variable/ballet";
+import '@fontsource-variable/plus-jakarta-sans'
+import '@fontsource-variable/montserrat'
+import '@fontsource-variable/ballet'
 
 // Global styles
-import "../styles/global.css";
-import Header from "../components/sections/Header";
-import Footer from "../components/sections/Footer.astro";
-import AOSInit from "../components/utils/AOSinit";
+import '../styles/global.css'
+import Header from '../components/sections/Header'
+import Footer from '../components/sections/Footer.astro'
+import AOSInit from '../components/utils/AOSinit'
 ---
 
 <!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<meta name="generator" content={Astro.generator} />
-	</head>
-	<body>
-		<!-- Start aos -->
-		<AOSInit client:load />
-		<Header client:load />
-		<main>
-			<slot />
-		</main>
-		<Footer />
-	</body>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8' />
+    <meta
+      name='viewport'
+      content='width=device-width'
+    />
+    <link
+      rel='icon'
+      type='image/svg+xml'
+      href='/favicon.svg'
+    />
+    <link
+      rel='preconnect'
+      href='https://fonts.googleapis.com'
+    />
+    <link
+      rel='preconnect'
+      href='https://fonts.gstatic.com'
+      crossorigin
+    />
+    <meta
+      name='generator'
+      content={Astro.generator}
+    />
+
+	<!-- Umami Analytics -->
+    <script
+      defer
+      src='https://umami.apps.darideveloper.com/script.js'
+      data-website-id='412c46e6-d93a-459c-956b-9767bf02cbe1'
+    ></script>
+  </head>
+  <body>
+    <!-- Start aos -->
+    <AOSInit client:load />
+    <Header client:load />
+    <main>
+      <slot />
+    </main>
+    <Footer />
+  </body>
 </html>
