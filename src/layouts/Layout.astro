@@ -43,24 +43,44 @@ import Posthog from '../components/utils/posthog.astro'
       content={Astro.generator}
     />
 
-	<!-- Umami Analytics -->
+    <!-- Umami Analytics -->
     <script
       defer
       src='https://umami.apps.darideveloper.com/script.js'
       data-website-id='412c46e6-d93a-459c-956b-9767bf02cbe1'
     ></script>
 
-	<!-- Google tag (gtag.js) -->
-	<script async src="https://www.googletagmanager.com/gtag/js?id=G-KD3KNVH65H"></script>
-	<script is:inline>
-		window.dataLayer = window.dataLayer || [];
-		function gtag(){dataLayer.push(arguments);}
-		gtag('js', new Date());
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src='https://www.googletagmanager.com/gtag/js?id=G-KD3KNVH65H'
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];  
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
 
-		gtag('config', 'G-KD3KNVH65H');
-	</script>
+      gtag('config', 'G-KD3KNVH65H');
+    </script>
 
-	<Posthog />
+    <!-- Posthog -->
+    <Posthog />
+
+    <!-- OpenPanel -->
+    <script is:inline>
+      window.op = window.op||function(...args){(window.op.q=window.op.q||[]).push(args);};
+      window.op('init', {
+        apiUrl: 'https://opapi.apps.darideveloper.com',
+        clientId: '66721c89-fe0e-4b79-94e6-f18952f3861c',
+        trackScreenViews: true,
+        trackOutgoingLinks: true,
+        trackAttributes: true,
+      });
+    </script>
+    <script src="https://openpanel.dev/op1.js" defer async></script>
+
   </head>
   <body>
     <!-- Start aos -->
