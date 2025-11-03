@@ -1,8 +1,8 @@
 // Libs
 import { getInfoCards } from '../lib/api/infoCards'
 
-export const phone = '4793324218'
-export const phoneUnformatted = '+14793324218'
+export const phone = '479-332-4693'
+export const phoneUnformatted = '+14793324693'
 export const email = 'moonhouse.ar@gmail.com'
 
 // Get and format address from api info cards
