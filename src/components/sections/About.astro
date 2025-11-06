@@ -2,16 +2,17 @@
 // DARIDEV: organize imports
 
 // Components
-import AboutCard from '../ui/AboutCard.astro'
-import CardInfo from '../ui/CardInfo.astro'
+import AboutCard from "../ui/AboutCard.astro";
+import CardInfo from "../ui/CardInfo.astro";
 
 // Icons
-import { IoLocationOutline, IoReceiptOutline } from 'react-icons/io5'
-import { IoTimeOutline } from 'react-icons/io5'
-import { IoCalendarOutline } from 'react-icons/io5'
+import { IoLocationOutline, IoReceiptOutline } from "react-icons/io5";
+import { IoTimeOutline } from "react-icons/io5";
+import { IoCalendarOutline } from "react-icons/io5";
 
 // Libs
-import { getInfoCards } from '../../lib/api/infoCards'
+import { getInfoCards } from "../../lib/api/infoCards";
+import { getAboutTexts, getAboutImages } from "../../lib/api/about";
 
 // Icon mapping
 const iconMap: Record<string, any> = {
@@ -21,41 +22,39 @@ const iconMap: Record<string, any> = {
   calendar: IoCalendarOutline,
   reservations: IoCalendarOutline,
   invoice: IoReceiptOutline,
-}
+};
 
 // Card data interface
 interface CardData {
-  iconName: string
-  title: string
-  description: string
-  link: string
+  iconName: string;
+  title: string;
+  description: string;
+  link: string;
 }
 
 // JSON data to display on the page
-const cardData: CardData[] = await getInfoCards()
+const cardData: CardData[] = await getInfoCards();
+
+// Get about data from API
+const aboutTexts = await getAboutTexts();
+const aboutImages = await getAboutImages();
 ---
 
-<section
-  class:list={['bg-black', 'py-20', 'w-full']}
-  id='about'
->
-  <div class:list={['max-w-7xl', 'container']}>
+<section class:list={["bg-black", "py-20", "w-full"]} id="about">
+  <div class:list={["max-w-7xl", "container"]}>
     <!-- Top Info Cards -->
     <div
       class:list={[
-        'grid',
-        'grid-cols-1 lg:grid-cols-3',
-        'justify-center lg:justify-between',
-        'gap-12',
-        'mb-20',
+        "grid",
+        "grid-cols-1 lg:grid-cols-3",
+        "justify-center lg:justify-between",
+        "gap-12",
+        "mb-20",
       ]}
     >
       {
         cardData.map((card, index) => (
-          <div
-            data-aos='zoom-in-down'
-            data-aos-delay={100 * (index + 1)}
-          >
+          <div data-aos="zoom-in-down" data-aos-delay={100 * (index + 1)}>
             <AboutCard
               icon={iconMap[card.iconName]}
               title={card.title}
@@ -67,6 +66,6 @@ const cardData: CardData[] = await getInfoCards()
       }
     </div>
 
-    <CardInfo />
+    <CardInfo aboutTexts={aboutTexts} aboutImages={aboutImages} />
   </div>
 </section>
