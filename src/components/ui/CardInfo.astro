@@ -1,71 +1,119 @@
 ---
 // CardInfo component - Story section with timeline
+// Libs
+import { marked } from "marked";
+// Props
+interface Props {
+  aboutTexts?: string[];
+  aboutImages?: string[];
+}
+
+const { aboutTexts = [], aboutImages = [] } = Astro.props;
 
 // Data
-const altText = 'Restaurant Interior (Moonhouse)'
+const altText = "Restaurant Interior (Moonhouse)";
+
+// Use first image from API or fallback to default
+const imageUrl = aboutImages.length > 0 ? aboutImages[0] : "";
+
+// Use first text from API or fallback to default
+const defaultText = ``;
+
+const storyText = aboutTexts.length > 0 ? aboutTexts[0] : defaultText;
 
 // Components
-import Subtitle from './Subtitle.tsx'
+import Subtitle from "./Subtitle.tsx";
 ---
 
-<!-- DARIDEV: add wrapper -->
 <div>
-  <!-- Story Section -->
-  <div class:list={['lg:grid', 'lg:grid-cols-2', 'gap-16', 'items-center']}>
-    <!-- Image -->
-    <div class:list={['relative']}>
+  <div class:list={["lg:grid", "lg:grid-cols-2", "gap-16", "items-center"]}>
+    <div class:list={["relative"]}>
       <div
+
+
+
+
         class:list={[
-          'w-full',
-          'bg-gray-800',
-          'rounded-lg',
-          'shadow-2xl',
-          'overflow-hidden',
+          "w-full",
+          "bg-gray-800",
+          "rounded-lg",
+          "shadow-2xl",
+          "overflow-hidden",
         ]}
-        style='aspect-ratio: 4/3;'
+
+
+
+
+        style="aspect-ratio: 4/3;"
+
+
+
       >
         <img
-          src='/images/table.png'
+
+
+
+
+
+          src={imageUrl}
+
+
+
+
+
           alt={altText}
-          class:list={['w-full', 'h-full', 'object-cover']}
-          loading='lazy'
+
+
+
+
+
+          class:list={["w-full", "h-full", "object-cover"]}
+
+
+
+
+
+          loading="lazy"
+
+
+
+
+
           title={altText}
+
+
+
+
         />
       </div>
     </div>
-  
-    <!-- Content -->
-    <div class:list={['text-white']}>
-      <Subtitle
-        ish2={true}
-        iswhite={true}
-        className={'my-8'}
-      >
+
+    <div class:list={["text-white"]}>
+      <Subtitle ish2={true} iswhite={true} className={"my-8"}>
         The Story
       </Subtitle>
-      <p class:list={['text-gray-300', 'text-lg', 'leading-relaxed', 'mb-12']}>
-        In the heart of Fayetteville, Arkansas, <span class:list={['font-bold']}>Moonhouse Coffee Bar and Bistro</span>
-        comes to life in a charming home with over half a century of history.
-        Carefully restored, it preserves its original spirit and the details that
-        quietly tell the story of the place.
-        <br />
-        <br />
-        Moonhouse is a tribute to authenticity and community. It's where locals and
-        the city's vibrant student life come together to connect, unwind, and enjoy
-        a space that feels both welcoming and alive.
-        <br />
-        <br />
-        Every corner reflects our love for stories, experiences, and moments worth
-        remembering. Here, good coffee shares the stage with a cold beer, a glass of
-        wine, or a cocktail to fit the night. Welcome to Moonhouse, where every story
-        is a reason to return.
-      </p>
-  
-      <!-- Signature -->
-      <div class:list={['mt-12']}>
-        <div class:list={['text-4xl', 'text-white', 'font-script']}>Moonhouse</div>
+
+      <div
+
+
+
+
+        class:list={["text-gray-300", "text-lg", "leading-relaxed", "mb-12"]}
+
+
+
+
+        set:html={await marked.parse(storyText)}
+
+
+
+      />
+
+      <div class:list={["mt-12"]}>
+        <div class:list={["text-4xl", "text-white", "font-script"]}>
+          Moonhouse
+        </div>
       </div>
     </div>
   </div>
 </div>
-
