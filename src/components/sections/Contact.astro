@@ -2,17 +2,17 @@
 // DARIDEV: organize imports
 
 // Components
-import SmallSubtitle from '../ui/SmallSubtitle.astro'
-import Link from '../ui/Link.astro'
-import IconLink from '../ui/Icon.astro'
-import Schedule from '../ui/Schedule.astro'
+import SmallSubtitle from "../ui/SmallSubtitle.astro";
+import Link from "../ui/Link.astro";
+import IconLink from "../ui/Icon.astro";
+import Schedule from "../ui/Schedule.astro";
 
 // Icons
-import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from 'react-icons/fa'
+import { FaInstagram, FaFacebook, FaTiktok, FaWhatsapp } from "react-icons/fa";
 
 // Data
 // DARIDEV: get global data from data folder (to reuse in metadata)
-import { navLinks } from '../../data/nav.ts'
+import { navLinks } from "../../data/nav.ts";
 import {
   socialNetworks,
   address,
@@ -20,162 +20,142 @@ import {
   phoneUnformatted,
   email,
   daridevWhatsappLink,
-} from '../../data/contact.ts'
+} from "../../data/contact.ts";
 
 const contactData = {
   address: address,
   phone: phone,
   email: email,
-}
+};
 ---
 
 <section
   class:list={[
     // DARIDEV: fixed styles syntax
-    'bg-black',
-    'text-white',
-    'pt-45',
-    'relative',
-    'overflow-hidden',
-    'bg-brand-black',
+    "bg-black",
+    "text-white",
+    "pt-45",
+    "relative",
+    "overflow-hidden",
+    "bg-brand-black",
   ]}
 >
-  <div class:list={['container']}>
-    <div class:list={['absolute', 'inset-0 ', 'opacity-60']}>
+  <div class:list={["container"]}>
+    <div class:list={["absolute", "inset-0 ", "opacity-60"]}>
       <img
-        src='/images/moonscape-bg.png'
-        alt='Moon landscape background'
-        class:list={['w-full', 'h-full', 'object-cover']}
+        src="/images/moonscape-bg.png"
+        alt="Moon landscape background"
+        class:list={["w-full", "h-full", "object-cover"]}
       />
     </div>
 
-    <div class:list={['max-w-7xl', 'mx-auto', 'relative', 'z-10']}>
+    <div class:list={["max-w-7xl", "mx-auto", "relative", "z-10"]}>
       <div
         class:list={[
-          'grid',
-          'grid-cols-1',
-          'md:flex',
-          'md:justify-between',
-          'mb-12',
-          'text-center',
-          'md:text-left',
+          "grid",
+          "grid-cols-1",
+          "md:flex",
+          "md:justify-between",
+          "mb-12",
+          "text-center",
+          "md:text-left",
         ]}
       >
-        <div class:list={['space-y-4']}>
+        <div class:list={["space-y-4"]}>
           <SmallSubtitle
             iswhite={true}
             ish2={true}
-            class:list={['text-center', 'md:text-left']}
+            class:list={["text-center", "md:text-left"]}
           >
             CONTACT
           </SmallSubtitle>
 
           <div>
-            <p class:list={['text-white', 'mb-2']}>{contactData.address}</p>
-            <p class:list={['text-brand-orange', 'mb-2']}>
-              Call - <Link
-                href={`tel:${phoneUnformatted}`}
-                openInNewTab={false}
+            <p class:list={["text-white", "mb-2"]}>{contactData.address}</p>
+            <p class:list={["text-brand-orange", "mb-2"]}>
+              Call - <Link href={`tel:${phoneUnformatted}`} openInNewTab={false}
                 >{contactData.phone}</Link
               >
             </p>
-            <p class:list={['text-brand-orange']}>
-              <Link
-                href={`mailto:${contactData.email}`}
-                openInNewTab={false}
+            <p class:list={["text-brand-orange"]}>
+              <Link href={`mailto:${contactData.email}`} openInNewTab={false}
                 >{contactData.email}</Link
               >
             </p>
           </div>
           <div
             class:list={[
-              'flex',
-              'gap-3',
-              'mt-4',
-              'justify-center md:justify-start',
+              "flex",
+              "gap-3",
+              "mt-4",
+              "justify-center md:justify-start",
             ]}
           >
             {
               socialNetworks.map((social) => (
-                <IconLink
-                  href={social.link}
-                  openInNewTab={true}
-                >
-                  {social.name === 'Instagram' && <FaInstagram client:load />}
-                  {social.name === 'Facebook' && <FaFacebook client:load />}
-                  {social.name === 'Whatsapp' && <FaWhatsapp client:load />}
-                  {social.name === 'Tiktok' && <FaTiktok client:load />}
+                <IconLink href={social.link} openInNewTab={true}>
+                  {social.name === "Instagram" && <FaInstagram client:load />}
+                  {social.name === "Facebook" && <FaFacebook client:load />}
+                  {social.name === "Whatsapp" && <FaWhatsapp client:load />}
+                  {social.name === "Tiktok" && <FaTiktok client:load />}
                 </IconLink>
               ))
             }
           </div>
         </div>
 
-        <div class:list={['space-y-4', 'my-12 md:my-0', 'md:mt-18']}>
+        <div class:list={["space-y-4", "my-12 md:my-0", "md:mt-18"]}>
           <!-- DARIDEV: use regular p' and no br for spacing-->
           <!-- <p iswhite={true}><br /><br /><br />Moonhouse</p> -->
           <p
             class:list={[
-              'text-brand-white',
-              'text-2xl',
-              'font-bold',
-              'text-center',
+              "text-brand-white",
+              "text-2xl",
+              "font-bold",
+              "text-center",
             ]}
           >
             Moonhouse
           </p>
-          <p class:list={['text-brand-white']}>Get news & offers events.</p>
+          <p class:list={["text-brand-white"]}>Get news & offers events.</p>
         </div>
 
-        <div class:list={['space-y-4']}>
+        <div class:list={["space-y-4"]}>
           <SmallSubtitle
             iswhite={true}
             ish2={true}
-            class:list={['text-center', 'md:text-left']}
+            class:list={["text-center", "md:text-left"]}
           >
             WORKING HOURS
           </SmallSubtitle>
           <!-- DARIDEV: keep only schedule inside component (to reuse it) -->
-          <Schedule class:list={'gap-3'} />
+          <Schedule class:list={"gap-3"} />
         </div>
       </div>
 
       <div
         class:list={[
-          'border-t',
-          'border-brand-white',
-          'pt-6',
-          'text-center',
-          'text-gray-400',
-          'text-sm',
+          "border-t",
+          "border-brand-white",
+          "pt-6",
+          "text-center",
+          "text-gray-400",
+          "text-sm",
         ]}
       >
         {
           navLinks.map((link) => (
-            <Link
-              href={link.href}
-              openInNewTab={true}
-              class:list={['px-2']}
-            >
+            <Link href={link.href} openInNewTab={true} class:list={["px-2"]}>
               {link.label}
             </Link>
           ))
         }
         <small>
           <p>
-            © 2025 Moonhouse. All rights reserved. | 
-            Designed by 
-            <Link
-              href={"#"}
-              openInNewTab={false}
-            >
-              Moonhouse
-            </Link>
+            © 2025 Moonhouse. All rights reserved. | Designed by
+            <Link href={"#"} openInNewTab={false}> Moonhouse </Link>
             Powered by
-            <Link
-              href={daridevWhatsappLink}
-              openInNewTab={true}
-            >
+            <Link href={daridevWhatsappLink} openInNewTab={true}>
               Dari Dev's Team
             </Link>
           </p>
