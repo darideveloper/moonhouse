@@ -21,7 +21,7 @@ interface AboutImage {
 }
 
 interface LandingImageResponse {
-  data: AboutImage[]; 
+  data: AboutImage[];
 }
 
 export const getAboutTexts = async (): Promise<string[]> => {

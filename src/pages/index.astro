@@ -5,11 +5,14 @@ import PageSEO from '../components/utils/PageSEO.astro'
 import About from '../components/sections/About.astro'
 import Gallery from '../components/sections/Gallery'
 import Menu from '../components/sections/Menu.astro'
+import Banner from "../components/sections/Banner.astro";
+
 ---
 
 <Layout>
   <PageSEO currentPage='Home' />
   <Hero />
+  <Banner />
   <About />
   <Menu />
   <Gallery client:load />
