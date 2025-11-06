@@ -1,0 +1,114 @@
+---
+// Components
+import Subtitle from "../ui/Subtitle.tsx";
+import Link from "../ui/Link.astro";
+
+// Libs
+import { getBanner } from "../../lib/api/banner";
+import { marked } from "marked";
+
+// Get banner data from API
+const bannerData = await getBanner();
+
+// Fallback data if API fails
+const defaultData = {
+  title: "More Fizzy, More Fun",
+  description:
+    "Subscribe and save 15% on your favorite flavors when you join our fam. Choose any delivery window that works for you, gain access to new flavors, and get free shipping—always.",
+  button_text: "Subscribe & Save",
+  button_link: "#",
+  image: "/images/default-banner.jpg",
+};
+
+const data = bannerData || defaultData;
+
+// Parse markdown description
+const parsedDescription = await marked.parse(data.description);
+---
+
+<section
+  class:list={[
+    "relative",
+    "w-full",
+    "bg-white",
+    "overflow-hidden",
+    "py-20",
+    "lg:py-0",
+  ]}
+>
+  <div
+    class:list={[
+      "max-w-7xl",
+      "mx-auto",
+      "grid",
+      "grid-cols-1",
+      "lg:grid-cols-2",
+      "gap-8",
+      "lg:gap-0",
+      "items-center",
+    ]}
+  >
+    <!-- Left side - Content -->
+    <div
+      class:list={[
+        "px-6",
+        "lg:px-12",
+        "order-2",
+        "lg:order-1",
+        "text-center",
+        "lg:text-left",
+      ]}
+      data-aos="fade-right"
+    >
+      <Subtitle ish2={true} className="mb-6">
+        {data.title}
+      </Subtitle>
+
+      <div
+        class:list={["text-gray-600", "text-lg", "leading-relaxed", "mb-8"]}
+        set:html={parsedDescription}
+      />
+
+      <a
+        href={data.button_link}
+        class:list={[
+          "inline-block",
+          "bg-brand-orange",
+          "text-white",
+          "hover:text-white",
+          "px-8",
+          "py-4",
+          "rounded-full",
+          "font-medium",
+          "transition-all",
+          "duration-300",
+          "hover:bg-orange-600",
+          "hover:scale-105",
+        ]}
+      >
+        {data.button_text}
+      </a>
+    </div>
+
+    <!-- Right side - Image -->
+    <div
+      class:list={[
+        "relative",
+        "w-full",
+        "h-[400px]",
+        "lg:h-[600px]",
+        "order-1",
+        "lg:order-2",
+      ]}
+      data-aos="fade-left"
+    >
+      <img
+        src={data.image}
+        alt={data.title}
+        title={data.title}
+        class:list={["w-full", "h-full", "object-contain", "lg:object-cover"]}
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
