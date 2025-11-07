@@ -1,7 +1,6 @@
 // @ts-nocheck
 
-const ASSETS_PATH =
-  "https://moonhouse.apps.darideveloper.com/assets/ea6c8a63-aed0-45ba-8c52-209e65bbfedd";
+const ASSETS_PATH = "https://moonhouse.apps.darideveloper.com/assets";
 
 interface LandingTextResponse {
   data: Array<{
