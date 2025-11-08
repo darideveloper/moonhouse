@@ -63,3 +63,16 @@ export interface AboutImage {
 export interface LandingImageResponse {
   data: AboutImage[];
 }
+
+
+export interface MenuItemVariant {
+  id: number;
+  status: "published" | "draft" | "archived";
+  menu_item: number;
+  price: string;
+  details: string;
+}
+
+export interface MenuItemVariantsResponse {
+  data: MenuItemVariant[];
+}
