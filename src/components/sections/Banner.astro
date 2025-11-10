@@ -85,12 +85,10 @@ const parsedDescription = await marked.parse(data?.description || "");
           class:list={[
             "relative",
             "w-full",
-            "bg-gradient-to-b",
-            "from-[color:var(--banner-gradient-start)]",
-            "to-[color:var(--banner-gradient-end)]",
             "flex",
             "items-center",
             "justify-center",
+            "bg-banner-content-background"
           ]}
         >
           <img
@@ -109,7 +107,7 @@ const parsedDescription = await marked.parse(data?.description || "");
         <!-- Bottom Section - Content -->
         <div
           class:list={[
-            "bg-[color:var(--banner-content-background)]",
+            "bg-banner-content-background",
             "px-8",
             "py-8",
             "flex",
@@ -120,7 +118,7 @@ const parsedDescription = await marked.parse(data?.description || "");
           <h2
             id="banner-title"
             class:list={[
-              "text-[color:var(--banner-title-color)]",
+              "text-banner-title-color",
               "text-3xl",
               "lg:text-4xl",
               "font-title",
@@ -151,7 +149,7 @@ const parsedDescription = await marked.parse(data?.description || "");
               href={data?.button_link || "#"}
               class:list={[
                 "inline-block",
-                "bg-[color:var(--banner-cta-background)]",
+                "bg-banner-cta-background",
                 "text-white",
                 "px-8",
                 "py-4",

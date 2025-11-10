@@ -9,11 +9,11 @@
     --color-brand-orange: #e1b168;
     --color-brand-grey: #333333;
     --color-brand-grey-light: #d9d9d9;
-    --banner-content-background: #fff7e5;
-    --banner-gradient-start: #e8f5e9;
-    --banner-gradient-end: #f5f5dc;
-    --banner-cta-background: #ff653a;
-    --banner-title-color: #14433d;
+    --color-banner-content-background: #fff7e5;
+    --color-banner-gradient-start: #e8f5e9;
+    --color-banner-gradient-end: #f5f5dc;
+    --color-banner-cta-background: #ff653a;
+    --color-banner-title-color: #14433d;
 }
 
 html {
