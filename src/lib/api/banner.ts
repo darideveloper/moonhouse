@@ -39,9 +39,9 @@ export const getBanner = async (): Promise<BannerData | null> => {
 
     const json: BannerResponse = await response.json();
 
-    const activeBanner = json.data.find((item) => item.status === "published");
+    const activeBanner = json.data
 
-    if (!activeBanner) {
+    if (activeBanner.status !== "published") {
       return null;
     }
 
