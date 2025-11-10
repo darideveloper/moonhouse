@@ -93,7 +93,9 @@ const parsedDescription = await marked.parse(data.description);
       class:list={[
         "relative",
         "w-full",
-        "banner-gradient-bg",
+        "bg-gradient-to-b",
+        "from-[color:var(--banner-gradient-start)]",
+        "to-[color:var(--banner-gradient-end)]",
         "flex",
         "items-center",
         "justify-center",
@@ -115,7 +117,7 @@ const parsedDescription = await marked.parse(data.description);
     <!-- Bottom Section - Content -->
     <div
       class:list={[
-        "banner-content-bg",
+        "bg-[color:var(--banner-content-background)]",
         "px-8",
         "py-8",
         "flex",
@@ -126,7 +128,7 @@ const parsedDescription = await marked.parse(data.description);
       <h2
         id="banner-title"
         class:list={[
-          "banner-title",
+          "text-[color:var(--banner-title-color)]",
           "text-3xl",
           "lg:text-4xl",
           "font-title",
@@ -157,7 +159,7 @@ const parsedDescription = await marked.parse(data.description);
           href={data.button_link}
           class:list={[
             "inline-block",
-            "banner-cta-bg",
+            "bg-[color:var(--banner-cta-background)]",
             "text-white",
             "px-8",
             "py-4",
@@ -221,36 +223,3 @@ const parsedDescription = await marked.parse(data.description);
     }
   })();
 </script>
-
-<style>
-  :root {
-    --banner-content-background: #fff7e5;
-    --banner-gradient-start: #e8f5e9;
-    --banner-gradient-end: #f5f5dc;
-    --banner-cta-background: #ff653a;
-    --banner-title-color: #14433d;
-  }
-
-  /* Gradient background for top section - light green-blue to beige */
-  .banner-gradient-bg {
-    background: linear-gradient(
-      to bottom,
-      var(--banner-gradient-start) 0%,
-      var(--banner-gradient-end) 100%
-    );
-  }
-
-  /* Custom beige color for the bottom section */
-  .banner-content-bg {
-    background-color: var(--banner-content-background);
-  }
-
-  /* Coral orange button color */
-  .banner-cta-bg {
-    background-color: var(--banner-cta-background);
-  }
-
-  .banner-title {
-    color: var(--banner-title-color);
-  }
-</style>
