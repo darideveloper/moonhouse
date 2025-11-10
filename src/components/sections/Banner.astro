@@ -12,161 +12,166 @@ const data = bannerData;
 const parsedDescription = await marked.parse(data?.description || "");
 ---
 
-<!-- Pop-up Banner Modal -->
-<div
-  id="banner-popup"
-  class:list={[
-    "fixed",
-    "inset-0",
-    "z-50",
-    "hidden",
-    "items-center",
-    "justify-center",
-    "pointer-events-none",
-  ]}
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="banner-title"
->
-  <!-- Modal Container -->
-  <div
-    class:list={[
-      "relative",
-      "bg-white",
-      "rounded-lg",
-      "shadow-2xl",
-      "max-w-[650px]",
-      "w-full",
-      "mx-4",
-      "overflow-hidden",
-      "max-h-[90vh]",
-      "flex",
-      "flex-col",
-      "pointer-events-auto",
-    ]}
-  >
-    <!-- Close Button -->
-    <button
-      id="banner-close"
+<!-- Pop-up Banner Modal if data is available -->
+{
+  data && (
+    <div
+      id="banner-popup"
       class:list={[
-        "absolute",
-        "top-4",
-        "right-4",
-        "z-10",
-        "w-7",
-        "h-7",
-        "flex",
+        "fixed",
+        "inset-0",
+        "z-50",
+        "hidden",
         "items-center",
         "justify-center",
-        "rounded-full",
-        "bg-white",
-        "bg-opacity-90",
-        "hover:bg-opacity-100",
-        "text-gray-600",
-        "hover:text-gray-800",
-        "transition-all",
-        "duration-200",
-        "font-light",
-        "text-xl",
-        "leading-none",
-        "cursor-pointer",
+        "pointer-events-none",
       ]}
-      aria-label="Close banner"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="banner-title"
     >
-      ×
-    </button>
-
-    <!-- Top Section - Image -->
-    <div
-      class:list={[
-        "relative",
-        "w-full",
-        "bg-gradient-to-b",
-        "from-[color:var(--banner-gradient-start)]",
-        "to-[color:var(--banner-gradient-end)]",
-        "flex",
-        "items-center",
-        "justify-center",
-      ]}
-    >
-      <img
-        src="/images/banner-image.png"
-        alt={data?.title || ""}
-        title={data?.title || ""}
-        class:list={[
-          "w-full",
-          "h-auto",
-          "object-contain",
-        ]}
-        loading="eager"
-      />
-    </div>
-
-    <!-- Bottom Section - Content -->
-    <div
-      class:list={[
-        "bg-[color:var(--banner-content-background)]",
-        "px-8",
-        "py-8",
-        "flex",
-        "flex-col",
-      ]}
-    >
-      <!-- Title -->
-      <h2
-        id="banner-title"
-        class:list={[
-          "text-[color:var(--banner-title-color)]",
-          "text-3xl",
-          "lg:text-4xl",
-          "font-title",
-          "mb-4",
-          "font-bold",
-          "text-center",
-        ]}
-      >
-        {data?.title || ""}
-      </h2>
-
-      <!-- Paragraph -->
+      <!-- Modal Container -->
       <div
         class:list={[
-          "text-gray-700",
-          "text-base",
-          "lg:text-lg",
-          "leading-relaxed",
-          "mb-6",
-          "text-center",
+          "relative",
+          "bg-white",
+          "rounded-lg",
+          "shadow-2xl",
+          "max-w-[650px]",
+          "w-full",
+          "mx-4",
+          "overflow-hidden",
+          "max-h-[90vh]",
+          "flex",
+          "flex-col",
+          "pointer-events-auto",
         ]}
-        set:html={parsedDescription}
-      />
-
-      <!-- Button -->
-      <div class="flex justify-center">
-        <a
-          href={data?.button_link || "#"}
+      >
+        <!-- Close Button -->
+        <button
+          id="banner-close"
           class:list={[
-            "inline-block",
-            "bg-[color:var(--banner-cta-background)]",
-            "text-white",
-            "px-8",
-            "py-4",
-            "rounded-lg",
-            "font-semibold",
-            "text-lg",
+            "absolute",
+            "top-4",
+            "right-4",
+            "z-10",
+            "w-7",
+            "h-7",
+            "flex",
+            "items-center",
+            "justify-center",
+            "rounded-full",
+            "bg-white",
+            "bg-opacity-90",
+            "hover:bg-opacity-100",
+            "text-gray-600",
+            "hover:text-gray-800",
             "transition-all",
-            "duration-300",
-            "hover:!scale-105",
-            "shadow-md",
-            "hover:!shadow-lg",
+            "duration-200",
+            "font-light",
+            "text-xl",
+            "leading-none",
+            "cursor-pointer",
+          ]}
+          aria-label="Close banner"
+        >
+          ×
+        </button>
+
+        <!-- Top Section - Image -->
+        <div
+          class:list={[
+            "relative",
+            "w-full",
+            "bg-gradient-to-b",
+            "from-[color:var(--banner-gradient-start)]",
+            "to-[color:var(--banner-gradient-end)]",
+            "flex",
+            "items-center",
+            "justify-center",
           ]}
         >
-          {data?.button_text || ""}
-        </a>
+          <img
+            src="/images/banner-image.png"
+            alt={data?.title || ""}
+            title={data?.title || ""}
+            class:list={[
+              "w-full",
+              "h-auto",
+              "object-contain",
+            ]}
+            loading="eager"
+          />
+        </div>
+
+        <!-- Bottom Section - Content -->
+        <div
+          class:list={[
+            "bg-[color:var(--banner-content-background)]",
+            "px-8",
+            "py-8",
+            "flex",
+            "flex-col",
+          ]}
+        >
+          <!-- Title -->
+          <h2
+            id="banner-title"
+            class:list={[
+              "text-[color:var(--banner-title-color)]",
+              "text-3xl",
+              "lg:text-4xl",
+              "font-title",
+              "mb-4",
+              "font-bold",
+              "text-center",
+            ]}
+          >
+            {data?.title || ""}
+          </h2>
+
+          <!-- Paragraph -->
+          <div
+            class:list={[
+              "text-gray-700",
+              "text-base",
+              "lg:text-lg",
+              "leading-relaxed",
+              "mb-6",
+              "text-center",
+            ]}
+            set:html={parsedDescription}
+          />
+
+          <!-- Button -->
+          <div class="flex justify-center">
+            <a
+              href={data?.button_link || "#"}
+              class:list={[
+                "inline-block",
+                "bg-[color:var(--banner-cta-background)]",
+                "text-white",
+                "px-8",
+                "py-4",
+                "rounded-lg",
+                "font-semibold",
+                "text-lg",
+                "transition-all",
+                "duration-300",
+                "hover:!scale-105",
+                "shadow-md",
+                "hover:!shadow-lg",
+              ]}
+            >
+              {data?.button_text || ""}
+            </a>
+          </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
+    </div>    
+  )
+}
+
 
 <script>
   // Banner Pop-up Logic
