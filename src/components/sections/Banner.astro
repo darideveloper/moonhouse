@@ -93,7 +93,7 @@ const parsedDescription = await marked.parse(data.description);
       class:list={[
         "relative",
         "w-full",
-        "bg-banner-gradient",
+        "banner-gradient-bg",
         "flex",
         "items-center",
         "justify-center",
@@ -115,7 +115,7 @@ const parsedDescription = await marked.parse(data.description);
     <!-- Bottom Section - Content -->
     <div
       class:list={[
-        "bg-beige-50",
+        "banner-content-bg",
         "px-8",
         "py-8",
         "flex",
@@ -126,10 +126,10 @@ const parsedDescription = await marked.parse(data.description);
       <h2
         id="banner-title"
         class:list={[
+          "banner-title",
           "text-3xl",
           "lg:text-4xl",
           "font-title",
-          "text-green-800",
           "mb-4",
           "font-bold",
           "text-center",
@@ -146,7 +146,7 @@ const parsedDescription = await marked.parse(data.description);
           "lg:text-lg",
           "leading-relaxed",
           "mb-6",
-          "text-left",
+          "text-center",
         ]}
         set:html={parsedDescription}
       />
@@ -157,7 +157,7 @@ const parsedDescription = await marked.parse(data.description);
           href={data.button_link}
           class:list={[
             "inline-block",
-            "bg-coral-orange",
+            "banner-cta-bg",
             "text-white",
             "px-8",
             "py-4",
@@ -166,10 +166,9 @@ const parsedDescription = await marked.parse(data.description);
             "text-lg",
             "transition-all",
             "duration-300",
-            "hover:bg-coral-orange-dark",
-            "hover:scale-105",
+            "hover:!scale-105",
             "shadow-md",
-            "hover:shadow-lg",
+            "hover:!shadow-lg",
           ]}
         >
           {data.button_text}
@@ -224,22 +223,34 @@ const parsedDescription = await marked.parse(data.description);
 </script>
 
 <style>
-  /* Custom beige color for the bottom section */
-  .bg-beige-50 {
-    background-color: #f5f5dc;
+  :root {
+    --banner-content-background: #fff7e5;
+    --banner-gradient-start: #e8f5e9;
+    --banner-gradient-end: #f5f5dc;
+    --banner-cta-background: #ff653a;
+    --banner-title-color: #14433d;
   }
 
   /* Gradient background for top section - light green-blue to beige */
-  .bg-banner-gradient {
-    background: linear-gradient(to bottom, #e8f5e9 0%, #f5f5dc 100%);
+  .banner-gradient-bg {
+    background: linear-gradient(
+      to bottom,
+      var(--banner-gradient-start) 0%,
+      var(--banner-gradient-end) 100%
+    );
+  }
+
+  /* Custom beige color for the bottom section */
+  .banner-content-bg {
+    background-color: var(--banner-content-background);
   }
 
   /* Coral orange button color */
-  .bg-coral-orange {
-    background-color: #ff6b6b;
+  .banner-cta-bg {
+    background-color: var(--banner-cta-background);
   }
 
-  .bg-coral-orange-dark {
-    background-color: #ee5a5a;
+  .banner-title {
+    color: var(--banner-title-color);
   }
 </style>
