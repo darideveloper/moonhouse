@@ -1,4 +1,4 @@
-import type { MenuCategory, MenuItem } from '../../types/apitypes'
+import type { MenuCategory, MenuItem, MenuItemVariant } from '../../types/apitypes'
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL
 
@@ -10,6 +10,10 @@ export interface FormattedMenuItem {
     src: string
     alt: string
   }
+  variants: {
+    details: string
+    price: number
+  }[]
 }
 
 export interface FormattedMenuSection {
@@ -19,7 +23,18 @@ export interface FormattedMenuSection {
 
 
 // Format single menu utem
-export const structureMenuItemData = (apiItem: MenuItem): FormattedMenuItem => {
+export const structureMenuItemData = (apiItem: MenuItem, allVariants: MenuItemVariant[]): FormattedMenuItem => {
+
+
+  // Add optional variants inside each product
+  const variants = allVariants.filter((variant) => variant.menu_item === apiItem.id)
+  const formattedVariants = variants.map((variant) => {
+    return {
+      details: variant.details,
+      price: parseFloat(variant.price),
+    }
+  })
+
   return {
     name: apiItem.name,
     description: apiItem.details,
@@ -28,12 +43,14 @@ export const structureMenuItemData = (apiItem: MenuItem): FormattedMenuItem => {
       src: `${API_BASE_URL}/assets/${apiItem.photo}`,
       alt: apiItem.name,
     },
+    variants: formattedVariants,
   }
 }
 
 export const structureMenuData = (
   categories: MenuCategory[],
-  allItems: MenuItem[]
+  allItems: MenuItem[],
+  allVariants: MenuItemVariant[]
 ): FormattedMenuSection[] => {
 
   const formattedMenu = categories.map((category) => {
@@ -42,7 +59,7 @@ export const structureMenuData = (
     )
 
     const formattedItems = itemsForCategory.map((apiItem) => {
-      return structureMenuItemData(apiItem)
+      return structureMenuItemData(apiItem, allVariants)
     })
 
     return {

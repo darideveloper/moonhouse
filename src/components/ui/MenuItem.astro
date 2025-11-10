@@ -1,4 +1,6 @@
 ---
+import clsx from 'clsx'
+
 // Props
 interface Props {
   name?: string
@@ -8,6 +10,10 @@ interface Props {
     src: string
     alt: string
   }
+  variants?: {
+    details: string
+    price: number
+  }[]
   class?: string
 }
 
@@ -16,6 +22,7 @@ const {
   description = 'Default description for the menu item.',
   price = 0,
   image = { src: '/images/durazno.webp', alt: 'Default menu item image' },
+  variants = [],
   class: className,
 } = Astro.props
 
@@ -60,11 +67,45 @@ const imageStyles = [
         ]}
       >
       </div>
+      <!-- Show price only if no variants and price no 0  -->
+      {
+        variants.length === 0 && price > 0 && (
+          <span
+            class:list={['text-xl font-bold text-brand-black whitespace-nowrap']}
+          >
+            $ {price}
+          </span>
+        )
+      }
+    </div>
 
-      <span
-        class:list={['text-xl font-bold text-brand-black whitespace-nowrap']}
-        >$ {price}</span
-      >
+    {/* Render each menu variant, also with dots between them */}
+    <div class:list={['flex flex-col gap-2']}>
+      {
+        variants.map((variant, index) => (
+          <div class={clsx('flex', 'items-center', 'gap-2')}>
+            {/* Variant name */}
+            <span class:list={['text-sm text-gray-500', 'mb-0']}>
+              {variant.details}
+            </span>
+            {/* Dots separator */}
+            <div
+              class:list={[
+                'flex-grow',
+                'border-b-3',
+                'border-dotted',
+                'border-gray-300',
+              ]}
+            />
+            {/* Price */}
+            {variant.price > 0 && (
+              <span class:list={['text-sm text-gray-500', 'mb-0']}>
+                $ {variant.price}
+              </span>
+            )}
+          </div>
+        ))
+      }
     </div>
   </div>
 </article>

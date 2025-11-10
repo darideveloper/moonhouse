@@ -10,6 +10,10 @@ interface MenuItemData {
     src: string
     alt: string
   }
+  variants?: {
+    details: string
+    price: number
+  }[]
 }
 
 interface Props {
@@ -55,6 +59,7 @@ const customSubtitleStyles = ['!text-4xl', 'mb-4']
           description={item.description}
           price={item.price}
           image={item.image}
+          variants={item.variants}
         />
       ))
     }

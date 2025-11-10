@@ -15,13 +15,13 @@ import {
 const categoriesFromApi = await getMenuCategories()
 const allItemsFromApi = await getMenuItems()
 const allVariantsFromApi = await getMenuVariants()
-const formattedMenu = structureMenuData(categoriesFromApi, allItemsFromApi)
+const formattedMenu = structureMenuData(categoriesFromApi, allItemsFromApi, allVariantsFromApi)
 
 const todaySpecialItems = allItemsFromApi.filter(
   (item) => item.is_today_special
 )
 const todaySpecialFormattedItems = todaySpecialItems.map((item) =>
-  structureMenuItemData(item)
+  structureMenuItemData(item, allVariantsFromApi)
 )
 ---
 
