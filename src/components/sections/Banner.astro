@@ -29,6 +29,8 @@ const parsedDescription = await marked.parse(data?.description || "");
       role="dialog"
       aria-modal="true"
       aria-labelledby="banner-title"
+      data-aos="fade-up"
+      data-aos-delay="2000"
     >
       <!-- Modal Container -->
       <div
@@ -187,12 +189,10 @@ const parsedDescription = await marked.parse(data?.description || "");
     
     // Show popup if not dismissed (with a small delay for better UX)
     if (!wasDismissed) {
-      setTimeout(() => {
-        if (popup) {
-          popup.classList.remove("hidden");
-          popup.classList.add("flex");
-        }
-      }, 1000); // Show after 1 second
+      if (popup) {
+        popup.classList.remove("hidden");
+        popup.classList.add("flex");
+      }
     }
 
     // Close button handler
