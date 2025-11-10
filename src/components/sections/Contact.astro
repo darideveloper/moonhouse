@@ -16,11 +16,12 @@ import { navLinks } from "../../data/nav.ts";
 import {
   socialNetworks,
   address,
-  phone,
-  phoneUnformatted,
   email,
   daridevWhatsappLink,
 } from "../../data/contact.ts";
+import { getPhoneData } from "../../lib/api/contact";
+
+const { phone, phoneUnformatted } = await getPhoneData();
 
 const contactData = {
   address: address,

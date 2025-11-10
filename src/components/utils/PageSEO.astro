@@ -10,15 +10,17 @@ import BaseSEO from "./base/BaseSEO.astro";
 
 // Data
 import { domain } from "../../data/setup";
-import { phoneUnformatted, addressElems } from "../../data/contact";
+import { addressElems } from "../../data/contact";
 import { servicesData } from "../../data/servcies";
 import { getOpeningHours } from "../../lib/api/schedule";
 import {
   convertToOpeningHours,
   convertToOpeningHoursSpecification,
 } from "../../lib/utils/formatschedule";
+import { getPhoneData } from "../../lib/api/contact";
 
 const hoursData = await getOpeningHours();
+const { phoneUnformatted } = await getPhoneData();
 
 /**
  * hours format:

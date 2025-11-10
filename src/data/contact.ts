@@ -1,6 +1,5 @@
 // Libs
 import { getInfoCards } from "../lib/api/infoCards";
-import { getPhoneData } from "../lib/api/contact";
 
 export const email = "moonhouse.ar@gmail.com";
 
@@ -26,9 +25,6 @@ export const address =
   addressElems.postalCode +
   " " +
   addressElems.addressCountry;
-
-// get phone from api
-export const { phone, phoneUnformatted } = await getPhoneData();
 
 export const socialNetworks = [
   { name: "Instagram", link: "https://www.instagram.com/moonhouse_ar" },
