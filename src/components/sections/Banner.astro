@@ -1,7 +1,4 @@
 ---
-// Components
-import Link from "../ui/Link.astro";
-
 // Libs
 import { getBanner } from "../../lib/api/banner";
 import { marked } from "marked";
@@ -9,20 +6,10 @@ import { marked } from "marked";
 // Get banner data from API
 const bannerData = await getBanner();
 
-// Fallback data if API fails
-const defaultData = {
-  title: "More Fizzy, More Fun",
-  description:
-    "Subscribe and save 15% on your favorite flavors when you join our fam. Choose any delivery window that works for you, gain access to new flavors, and get free shipping—always.",
-  button_text: "Subscribe & Save",
-  button_link: "#",
-  image: "/images/banner-image.png",
-};
-
-const data = bannerData || defaultData;
+const data = bannerData;
 
 // Parse markdown description
-const parsedDescription = await marked.parse(data.description);
+const parsedDescription = await marked.parse(data?.description || "");
 ---
 
 <!-- Pop-up Banner Modal -->
@@ -103,8 +90,8 @@ const parsedDescription = await marked.parse(data.description);
     >
       <img
         src="/images/banner-image.png"
-        alt={data.title}
-        title={data.title}
+        alt={data?.title || ""}
+        title={data?.title || ""}
         class:list={[
           "w-full",
           "h-auto",
@@ -137,7 +124,7 @@ const parsedDescription = await marked.parse(data.description);
           "text-center",
         ]}
       >
-        {data.title}
+        {data?.title || ""}
       </h2>
 
       <!-- Paragraph -->
@@ -156,7 +143,7 @@ const parsedDescription = await marked.parse(data.description);
       <!-- Button -->
       <div class="flex justify-center">
         <a
-          href={data.button_link}
+          href={data?.button_link || "#"}
           class:list={[
             "inline-block",
             "bg-[color:var(--banner-cta-background)]",
@@ -173,7 +160,7 @@ const parsedDescription = await marked.parse(data.description);
             "hover:!shadow-lg",
           ]}
         >
-          {data.button_text}
+          {data?.button_text || ""}
         </a>
       </div>
     </div>
