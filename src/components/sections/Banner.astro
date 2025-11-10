@@ -1,6 +1,5 @@
 ---
 // Components
-import Subtitle from "../ui/Subtitle.tsx";
 import Link from "../ui/Link.astro";
 
 // Libs
@@ -17,7 +16,7 @@ const defaultData = {
     "Subscribe and save 15% on your favorite flavors when you join our fam. Choose any delivery window that works for you, gain access to new flavors, and get free shipping—always.",
   button_text: "Subscribe & Save",
   button_link: "#",
-  image: "/images/default-banner.jpg",
+  image: "/images/banner-image.png",
 };
 
 const data = bannerData || defaultData;
@@ -26,89 +25,221 @@ const data = bannerData || defaultData;
 const parsedDescription = await marked.parse(data.description);
 ---
 
-<section
+<!-- Pop-up Banner Modal -->
+<div
+  id="banner-popup"
   class:list={[
-    "relative",
-    "w-full",
-    "bg-white",
-    "overflow-hidden",
-    "py-20",
-    "lg:py-0",
+    "fixed",
+    "inset-0",
+    "z-50",
+    "hidden",
+    "items-center",
+    "justify-center",
+    "pointer-events-none",
   ]}
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="banner-title"
 >
+  <!-- Modal Container -->
   <div
     class:list={[
-      "max-w-7xl",
-      "mx-auto",
-      "grid",
-      "grid-cols-1",
-      "lg:grid-cols-2",
-      "gap-8",
-      "lg:gap-0",
-      "items-center",
+      "relative",
+      "bg-white",
+      "rounded-lg",
+      "shadow-2xl",
+      "max-w-[650px]",
+      "w-full",
+      "mx-4",
+      "overflow-hidden",
+      "max-h-[90vh]",
+      "flex",
+      "flex-col",
+      "pointer-events-auto",
     ]}
   >
-    <!-- Left side - Content -->
-    <div
+    <!-- Close Button -->
+    <button
+      id="banner-close"
       class:list={[
-        "px-6",
-        "lg:px-12",
-        "order-2",
-        "lg:order-1",
-        "text-center",
-        "lg:text-left",
+        "absolute",
+        "top-4",
+        "right-4",
+        "z-10",
+        "w-7",
+        "h-7",
+        "flex",
+        "items-center",
+        "justify-center",
+        "rounded-full",
+        "bg-white",
+        "bg-opacity-90",
+        "hover:bg-opacity-100",
+        "text-gray-600",
+        "hover:text-gray-800",
+        "transition-all",
+        "duration-200",
+        "font-light",
+        "text-xl",
+        "leading-none",
       ]}
-      data-aos="fade-right"
+      aria-label="Close banner"
     >
-      <Subtitle ish2={true} className="mb-6">
-        {data.title}
-      </Subtitle>
+      ×
+    </button>
 
-      <div
-        class:list={["text-gray-600", "text-lg", "leading-relaxed", "mb-8"]}
-        set:html={parsedDescription}
-      />
-
-      <a
-        href={data.button_link}
-        class:list={[
-          "inline-block",
-          "bg-brand-orange",
-          "text-white",
-          "hover:text-white",
-          "px-8",
-          "py-4",
-          "rounded-full",
-          "font-medium",
-          "transition-all",
-          "duration-300",
-          "hover:bg-orange-600",
-          "hover:scale-105",
-        ]}
-      >
-        {data.button_text}
-      </a>
-    </div>
-
-    <!-- Right side - Image -->
+    <!-- Top Section - Image -->
     <div
       class:list={[
         "relative",
         "w-full",
-        "h-[400px]",
-        "lg:h-[600px]",
-        "order-1",
-        "lg:order-2",
+        "bg-banner-gradient",
+        "flex",
+        "items-center",
+        "justify-center",
       ]}
-      data-aos="fade-left"
     >
       <img
-        src={data.image}
+        src="/images/banner-image.png"
         alt={data.title}
         title={data.title}
-        class:list={["w-full", "h-full", "object-contain", "lg:object-cover"]}
-        loading="lazy"
+        class:list={[
+          "w-full",
+          "h-auto",
+          "object-contain",
+        ]}
+        loading="eager"
       />
     </div>
+
+    <!-- Bottom Section - Content -->
+    <div
+      class:list={[
+        "bg-beige-50",
+        "px-8",
+        "py-8",
+        "flex",
+        "flex-col",
+      ]}
+    >
+      <!-- Title -->
+      <h2
+        id="banner-title"
+        class:list={[
+          "text-3xl",
+          "lg:text-4xl",
+          "font-title",
+          "text-green-800",
+          "mb-4",
+          "font-bold",
+          "text-center",
+        ]}
+      >
+        {data.title}
+      </h2>
+
+      <!-- Paragraph -->
+      <div
+        class:list={[
+          "text-gray-700",
+          "text-base",
+          "lg:text-lg",
+          "leading-relaxed",
+          "mb-6",
+          "text-left",
+        ]}
+        set:html={parsedDescription}
+      />
+
+      <!-- Button -->
+      <div class="flex justify-center">
+        <a
+          href={data.button_link}
+          class:list={[
+            "inline-block",
+            "bg-coral-orange",
+            "text-white",
+            "px-8",
+            "py-4",
+            "rounded-lg",
+            "font-semibold",
+            "text-lg",
+            "transition-all",
+            "duration-300",
+            "hover:bg-coral-orange-dark",
+            "hover:scale-105",
+            "shadow-md",
+            "hover:shadow-lg",
+          ]}
+        >
+          {data.button_text}
+        </a>
+      </div>
+    </div>
   </div>
-</section>
+</div>
+
+<script>
+  // Banner Pop-up Logic
+  (function () {
+    const STORAGE_KEY = "banner-popup-dismissed";
+    const popup = document.getElementById("banner-popup");
+    const closeButton = document.getElementById("banner-close");
+
+    if (!popup || !closeButton) return;
+
+    // Check if banner was previously dismissed
+    const wasDismissed = localStorage.getItem(STORAGE_KEY);
+    
+    // Show popup if not dismissed (with a small delay for better UX)
+    if (!wasDismissed) {
+      setTimeout(() => {
+        if (popup) {
+          popup.classList.remove("hidden");
+          popup.classList.add("flex");
+        }
+      }, 1000); // Show after 1 second
+    }
+
+    // Close button handler
+    closeButton.addEventListener("click", () => {
+      closeBanner();
+    });
+
+
+    // Close on Escape key
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && popup && !popup.classList.contains("hidden")) {
+        closeBanner();
+      }
+    });
+
+    function closeBanner() {
+      if (!popup) return;
+      popup.classList.add("hidden");
+      popup.classList.remove("flex");
+      localStorage.setItem(STORAGE_KEY, "true");
+    }
+  })();
+</script>
+
+<style>
+  /* Custom beige color for the bottom section */
+  .bg-beige-50 {
+    background-color: #f5f5dc;
+  }
+
+  /* Gradient background for top section - light green-blue to beige */
+  .bg-banner-gradient {
+    background: linear-gradient(to bottom, #e8f5e9 0%, #f5f5dc 100%);
+  }
+
+  /* Coral orange button color */
+  .bg-coral-orange {
+    background-color: #ff6b6b;
+  }
+
+  .bg-coral-orange-dark {
+    background-color: #ee5a5a;
+  }
+</style>
