@@ -52,7 +52,7 @@ export default function Header(): React.JSX.Element {
             isNavOpen={isNavOpen}
           />
           {/* Nav buttons */}
-          <div className={clsx('relative', 'pt-4 lg:pt-0')}>
+          <nav className={clsx('relative', 'pt-4 lg:pt-0')}>
             <ul
               className={clsx(
                 'flex',
@@ -96,7 +96,7 @@ export default function Header(): React.JSX.Element {
                 />
               ))}
             </ul>
-          </div>
+          </nav>
         </nav>
       </div>
     </header>
