@@ -1,6 +1,4 @@
 ---
-import Subtitle from './Subtitle'
-
 interface Props {
   name?: string
   description?: string
@@ -21,25 +19,25 @@ const {
 } = Astro.props
 ---
 
-<article
-  class:list={['max-w-md', 'mx-auto', 'py-6', 'bg-white', className]}
->
-  <h3
-    class:list={['text-xl', 'font-bold', 'text-black', 'mb-2']}
-  >
+<article class:list={['max-w-md', 'mx-auto', 'py-6', 'bg-white', className]}>
+  <h3 class:list={['text-xl', 'font-bold', 'text-black', 'mb-2']}>
     {name}
   </h3>
 
   <p class:list={['text-base', 'leading-relaxed', 'text-brand-black', 'mb-4']}>
     {description}
     <br />
-    <span
-      class:list={`
-        italic
-      `}
-    >
-      $ {price} USD
-    </span>
+    {
+      price > 0 && (
+        <span
+          class:list={`
+          italic
+        `}
+        >
+          $ {price} USD
+        </span>
+      )
+    }
   </p>
 
   <img
