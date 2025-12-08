@@ -11,9 +11,6 @@ import '../styles/global.css'
 import Header from '../components/sections/Header'
 import Footer from '../components/sections/Footer.astro'
 import AOSInit from '../components/utils/AOSinit'
-
-// Utils
-import Posthog from '../components/utils/posthog.astro'
 ---
 
 <!doctype html>
@@ -45,6 +42,7 @@ import Posthog from '../components/utils/posthog.astro'
 
     <!-- Umami Analytics -->
     <script
+      is:inline
       defer
       src='https://umami.apps.darideveloper.com/script.js'
       data-website-id='2a372d66-ea0a-42f4-b89b-f4582b17f2a7'
@@ -56,16 +54,19 @@ import Posthog from '../components/utils/posthog.astro'
       src='https://www.googletagmanager.com/gtag/js?id=G-KD3KNVH65H'
     ></script>
     <script is:inline>
-      window.dataLayer = window.dataLayer || [];  
+      window.dataLayer = window.dataLayer || []
       function gtag() {
-        dataLayer.push(arguments);
+        dataLayer.push(arguments)
       }
-      gtag('js', new Date());
+      gtag('js', new Date())
 
-      gtag('config', 'G-KD3KNVH65H');
+      gtag('config', 'G-KD3KNVH65H')
     </script>
-    <script src="https://openpanel.dev/op1.js" defer async></script>
-
+    <script
+      src='https://openpanel.dev/op1.js'
+      defer
+      async
+    ></script>
   </head>
   <body>
     <!-- Start aos -->
